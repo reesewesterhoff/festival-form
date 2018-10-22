@@ -1,14 +1,16 @@
 import { put, takeLatest, call } from 'redux-saga/effects';
 import axios from 'axios';
 
-// function* fetchBandInfo(action) {
-//     try {
-//         const elementResponse = yield call(axios.get, '/api/band');
-//         yield put({type: 'SET_BAND_INFO', payload: elementResponse.data});
-//     } catch (error) {
-//         console.log('Error getting festivals', error);
-//     }
-// }
+function* fetchBandInfo(action) {
+    console.log('saga side get', action.payload);
+    
+    try {
+        const elementResponse = yield call(axios.get, `/api/band`, {id: action.payload} );
+        yield put({type: 'SET_BAND_INFO', payload: elementResponse.data});
+    } catch (error) {
+        console.log('Error getting band info', error);
+    }
+}
 
 function* addBandInfo(action) {
     console.log('post request', action.payload);
@@ -20,7 +22,7 @@ function* addBandInfo(action) {
 }
 
 function* bandInfoSaga() {
-    // yield takeLatest('FETCH_ALL_FESTIVALS', fetchAllFestivals);
+    yield takeLatest('FETCH_BAND_INFO', fetchBandInfo);
     yield takeLatest('ADD_BAND_INFO', addBandInfo);
   }
 

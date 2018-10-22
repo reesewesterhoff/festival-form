@@ -4,6 +4,7 @@ import loginMode from './loginModeReducer';
 import user from './userReducer';
 import festivals from './festivalReducer';
 import festToRespond from './festToRespondReducer';
+import band_info from './bandInfoReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   festivals,
   festToRespond,
+  band_info,
 });
 
 export default rootReducer;

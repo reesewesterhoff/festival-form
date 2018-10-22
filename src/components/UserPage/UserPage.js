@@ -10,6 +10,9 @@ class UserPage extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ALL_FESTIVALS'});
+    this.props.dispatch({type: 'FETCH_BAND_INFO', payload: this.props.user.id});
+    console.log('client get with props of user id', this.props.user.id);
+    
   }
 
 

@@ -6,6 +6,8 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
+    console.log('get request for band info', req.user.id);
+
 });
 
 /**
