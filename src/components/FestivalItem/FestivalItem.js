@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 class FestivalItem extends Component {
 
+    
+
     render() {
         return(
             <tr>
@@ -12,7 +14,7 @@ class FestivalItem extends Component {
                     <img src={this.props.festival.image} height="200" />
                 </td>
                 <td>
-                    <button>RSVP</button>
+                    <button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</button>
                 </td>
             </tr>
         );

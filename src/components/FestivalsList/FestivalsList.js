@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FestivalItem from '../FestivalItem/FestivalItem';
+import { withRouter } from 'react-router-dom';
 
 class FestivalsList extends Component {
+
+    respondToFestival = (festival) => {
+        console.log('festival clicked', festival);
+        this.props.dispatch({type: 'FESTIVAL_RESPONSE', payload: festival});
+        this.props.history.push("/festivaldetail")
+    }
 
     render() {
         return (
@@ -29,6 +36,7 @@ class FestivalsList extends Component {
                             return <FestivalItem 
                                         key={festival.id}
                                         festival={festival}
+                                        respondToFestival={this.respondToFestival}
                                     />
                             }
                         )}
@@ -45,4 +53,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(FestivalsList);
+export default connect(mapStateToProps)(withRouter(FestivalsList));

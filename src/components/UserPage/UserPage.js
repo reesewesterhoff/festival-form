@@ -19,12 +19,11 @@ class UserPage extends Component {
         <h1 id="welcome">
           Welcome, { this.props.user.username }!
         </h1>
+        <br />
+        <h2>All Festivals</h2>
        <FestivalsList />
         <p>Your ID is: {this.props.user.id}</p>
         <LogOutButton className="log-in" />
-        <pre>
-          {JSON.stringify(this.props.state)}
-        </pre>
       </div>
     );
   }

@@ -10,9 +10,18 @@ function* fetchAllFestivals(action) {
     }
 }
 
+function* festivalResponse(action) {
+    let festivalToRespond = action.payload;
+    try {
+        yield put({type: 'SET_FESTIVAL_TO_RESPOND', payload: festivalToRespond});
+    } catch (error) {
+        console.log('Error getting festival for response', error);
+    }
+}
 
 function* festivalSaga() {
     yield takeLatest('FETCH_ALL_FESTIVALS', fetchAllFestivals);
+    yield takeLatest('FESTIVAL_RESPONSE', festivalResponse);
   }
   
   export default festivalSaga;

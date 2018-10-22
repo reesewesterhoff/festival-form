@@ -5,9 +5,8 @@ import { connect } from 'react-redux';
 const UserNav = (props) => (
   <div className="nav">
     <Link to="/home">
-      <h2 className="nav-title">Prime Solo Project</h2>
     </Link>
-    <div className="nav-right">
+    <div>
       <Link className="nav-link" to="/home">
         {/* Show this link if they are logged in or not,
         but call this link 'Home' if they are logged in,
@@ -20,9 +19,18 @@ const UserNav = (props) => (
           <Link className="nav-link" to="/info">
             Info Page
           </Link>
-          <LogOutButton className="nav-link"/>
+          <Link className="nav-link" to="/festivaldetail">
+            Detailed Festival
+          </Link>
         </>
       )}
+      {/* {props.user.id=1 && (
+        <>
+            <Link className="nav-link" to="/createfest">
+                Create Fest
+            </Link>
+        </>
+        )} */}
       {/* Always show this link since the about page is not protected */}
       <Link className="nav-link" to="/about">
         About
