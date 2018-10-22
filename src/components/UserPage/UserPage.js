@@ -18,6 +18,7 @@ class UserPage extends Component {
         <h1 id="welcome">
           Welcome, { this.props.user.username }!
         </h1>
+       <FestivalsList />
         <p>Your ID is: {this.props.user.id}</p>
         <LogOutButton className="log-in" />
         <pre>
@@ -32,6 +33,7 @@ class UserPage extends Component {
 // if you wanted you could write this code like this:
 // const mapStateToProps = ({user}) => ({ user });
 const mapStateToProps = state => ({
+  festivals: state.festivals,
   user: state.user,
 });
 
