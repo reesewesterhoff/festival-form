@@ -1,5 +1,3 @@
-
-
 const festivalReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_FESTIVALS':
