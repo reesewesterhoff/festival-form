@@ -21,23 +21,22 @@ class FestivalDetail extends Component {
     }
 
     componentDidMount() {
-        this.getFestInfo();
     }
 
-    getFestInfo = () => {
-        axios({
-            method: 'GET',
-            url: `/api/festival`
-        }).then(response => {
-            console.log('festival get response', response.data);
-            this.setState({
-                festivals: response.data,
-            });
-        }).catch(error => {
-            alert('Error getting festivals');
-            console.log('error get fests', error);
-        });
-    }
+    // getFestInfo = () => {
+    //     axios({
+    //         method: 'GET',
+    //         url: `/api/festival`
+    //     }).then(response => {
+    //         console.log('festival get response', response.data);
+    //         this.setState({
+    //             festivals: response.data,
+    //         });
+    //     }).catch(error => {
+    //         alert('Error getting festivals');
+    //         console.log('error get fests', error);
+    //     });
+    // }
 
 
     handleChangeFor = propertyName => event => {
@@ -74,17 +73,24 @@ class FestivalDetail extends Component {
         });
     };
 
-    // handleChange = (event) => {
-    //     this.setState({
-    //         arrival_time: event.target.value
-    //     });
-    // }
 
     render() {
+
+        let fest = this.props.festToRespond;
+
         return (
             <div>
                 FestivalDetail
-                <pre>{JSON.stringify(this.state)}</pre>
+                {fest.id ? 
+                <ul>
+                    <li>{fest.name}</li>
+                    <li>{fest.date}</li>
+                    <li>{fest.address}</li>
+                    <li>
+                        <img src={fest.image} height="200" />
+                    </li>
+                </ul>
+                : null }
                 <br />
                 <hr />
                 <form onSubmit={this.handleSubmit}>
@@ -111,7 +117,10 @@ class FestivalDetail extends Component {
 }
 
 const mapStateToProps = state => {
-    return { state }
+    return { 
+        state,
+        festToRespond: state.festToRespond, 
+    }
 }
 
 export default connect(mapStateToProps)(FestivalDetail);
