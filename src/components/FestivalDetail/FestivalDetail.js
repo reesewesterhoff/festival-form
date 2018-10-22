@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 class FestivalDetail extends Component {
 
     state = {
         festivals: [],
         response: {
-            name: '',
-            tech_rider: 'a bunch of equipment',
-            band_rider: 'a bunch of stuff',
-            stage_plot: 'http://all4band.com/image/stage_plot2.jpg',
-            input_list: 'https://busites_www.s3.amazonaws.com/littlefeatnetcom/content/LF-input-list-2012.jpg',
+            name: this.props.band_info.name,
+            tech_rider: this.props.band_info.tech_rider,
+            band_rider: this.props.band_info.band_rider,
+            stage_plot: this.props.band_info.stage_plot,
+            input_list: this.props.band_info.input_list,
             arrival_time: '',
             requests: '',
             notes: '',
-            festival_id: 3,
-            band_info_id: 1,
+            festival_id: this.props.festToRespond.id,
+            band_info_id: this.props.band_info.id,
         }
     }
 
     componentDidMount() {
+        
     }
 
     // getFestInfo = () => {
@@ -55,22 +55,21 @@ class FestivalDetail extends Component {
         this.setState({
             response: {
                 arrival_time: '',
-                name: '',
                 requests: '',
                 notes: ''
             }
         });
         console.log(this.state.response); 
-        axios({    
-            method: 'POST',
-            url: '/festival',
-            data: this.state.response
-        }).then((response) => {
-            console.log(response);
-        }).catch(error => {
-            console.log('error posting', error);
-            alert('Error submitting response');
-        });
+        // axios({    
+        //     method: 'POST',
+        //     url: '/festival',
+        //     data: this.state.response
+        // }).then((response) => {
+        //     console.log(response);
+        // }).catch(error => {
+        //     console.log('error posting', error);
+        //     alert('Error submitting response');
+        // });
     };
 
 
@@ -98,10 +97,10 @@ class FestivalDetail extends Component {
                         <input type="text"  onChange={this.handleChangeFor('arrival_time')} />
                     </label>
                     <br />
-                    <label> Band Name
+                    {/* <label> Band Name
                         <input type="text"  onChange={this.handleChangeFor('name')} />
                     </label>
-                    <br />
+                    <br /> */}
                     <label> Notes
                         <input type="textArea"  onChange={this.handleChangeFor('notes')} />
                     </label>
@@ -119,6 +118,7 @@ class FestivalDetail extends Component {
 const mapStateToProps = state => {
     return { 
         state,
+        band_info: state.band_info,
         festToRespond: state.festToRespond, 
     }
 }

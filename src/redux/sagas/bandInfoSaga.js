@@ -16,6 +16,7 @@ function* addBandInfo(action) {
     console.log('post request', action.payload);
     try {
         yield call(axios.post, '/api/band', action.payload);
+        yield put({type: 'FETCH_BAND_INFO'});
     } catch (error) {
         console.log('Error posting new band info', error);
     }

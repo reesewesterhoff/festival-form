@@ -8,6 +8,7 @@ class FestivalsList extends Component {
     respondToFestival = (festival) => {
         console.log('festival clicked', festival);
         this.props.dispatch({type: 'FESTIVAL_RESPONSE', payload: festival});
+        this.props.dispatch({type: 'FETCH_BAND_INFO', payload: this.props.user.id});
         this.props.history.push("/festivaldetail")
     }
 
@@ -49,6 +50,7 @@ class FestivalsList extends Component {
 
 const mapStateToProps = state => {
     return {
+        user: state.user,
         festivals: state.festivals,
     }
 }

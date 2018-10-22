@@ -6,8 +6,14 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-    console.log('get request for band info', req.user.id);
-
+    pool.query(`SELECT * FROM "band_info"
+                WHERE "person_id"=$1`, [req.user.id])
+    .then(results => {
+        res.send(results.rows[0]);
+    }).catch(error => {
+        console.log('Error getting band info', error);
+        res.sendStatus(500);
+    });
 });
 
 /**
