@@ -19,6 +19,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
 import FestivalDetail from '../FestivalDetail/FestivalDetail';
+import BandInfoForm from '../BandInfoForm/BandInfoForm';
 
 import './App.css';
 
@@ -63,6 +64,11 @@ class App extends Component {
               exact
               path="/festivaldetail"
               component={FestivalDetail}
+            />
+            <ProtectedRoute
+              exact
+              path="/bandinfo"
+              component={BandInfoForm}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

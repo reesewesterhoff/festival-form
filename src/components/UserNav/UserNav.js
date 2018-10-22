@@ -22,6 +22,9 @@ const UserNav = (props) => (
           <Link className="nav-link" to="/festivaldetail">
             Detailed Festival
           </Link>
+          <Link className="nav-link" to="/bandinfo">
+            Band Info
+          </Link>
         </>
       )}
       {/* {props.user.id=1 && (
