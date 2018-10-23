@@ -23,6 +23,7 @@ import BandInfoForm from '../BandInfoForm/BandInfoForm';
 
 import './App.css';
 import AdminHome from '../AdminHome/AdminHome';
+import FestivalRespondents from '../FestivalRespondents/FestivalRespondents';
 
 class App extends Component {
   componentDidMount () {
@@ -80,6 +81,11 @@ class App extends Component {
               exact
               path="/createfest"
               component={BandInfoForm}
+            />
+            <ProtectedRoute 
+              exact
+              path="/festresponse"
+              component={FestivalRespondents}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

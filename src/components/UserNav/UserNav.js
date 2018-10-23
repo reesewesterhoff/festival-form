@@ -4,19 +4,22 @@ import { connect } from 'react-redux';
 
 const UserNav = (props) => (
   <div className="nav">
-  {/* ask??? */}
-    <Link to="/adminhome"> 
+    {/* ask??? */}
+    <Link to="/adminhome">
     </Link>
     <div>
-      {props.user.id===1 && (
-      <div>
-      <Link className="nav-link" to="/adminhome">
-        Admin Home
+      {props.user.id === 1 && (
+        <div>
+          <Link className="nav-link" to="/adminhome">
+            Admin Home
       </Link>
-      <Link className="nav-link" to="/createfest">
-        Create Festival
+          <Link className="nav-link" to="/createfest">
+            Create Festival
       </Link>
-      </div>
+          <Link className="nav-link" to="/festresponse">
+            Fest Responses
+      </Link>
+        </div>
       )}
     </div>
     <Link to="/home">
