@@ -19,9 +19,20 @@ function* addBandInfo(action) {
     }
 }
 
+function* updateBandInfo(action) {
+    console.log('update', action.payload);
+    try {
+        yield call(axios.put, `/api/band/${action.payload.id}`, action.payload);
+        yield put({type: 'FETCH_BAND_INFO'});
+    } catch (error) {
+        console.log('Error updating band information', error);
+    }
+}
+
 function* bandInfoSaga() {
     yield takeLatest('FETCH_BAND_INFO', fetchBandInfo);
     yield takeLatest('ADD_BAND_INFO', addBandInfo);
+    yield takeLatest('UPDATE_BAND_INFO', updateBandInfo);
   }
 
 

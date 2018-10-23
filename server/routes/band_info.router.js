@@ -32,4 +32,18 @@ router.post('/', (req, res) => {
     });
 });
 
+
+router.put('/:id', (req, res) => {
+    let id = req.params.id;
+    let body = req.body;
+    pool.query(`UPDATE "band_info" SET "name"=$1, "tech_rider"=$2, "band_rider"=$3, "stage_plot"=$4, "input_list"=$5
+                WHERE "person_id"=$6;`, [body.name, body.tech_rider, body.band_rider, body.stage_plot, body.input_list, id])
+    .then(() => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('Error putting new information', error);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;

@@ -17,6 +17,7 @@ class ResponsiveDialog extends React.Component {
     band_rider: this.props.band_info.band_rider,
     stage_plot: this.props.band_info.stage_plot,
     input_list: this.props.band_info.input_list,
+    id: this.props.user.id,
   };
 
   handleChangeFor = property => event => {
@@ -28,6 +29,7 @@ class ResponsiveDialog extends React.Component {
 
   handleClickOpen = () => {
     this.setState({ open: true });
+    this.props.dispatch({type: 'FETCH_BAND_INFO', payload: this.props.user.id});
   };
 
   handleClose = () => {
@@ -40,46 +42,51 @@ class ResponsiveDialog extends React.Component {
     this.handleClose();
   }
 
+  componentDidMount() {
+    
+  }
+
   render() {
 
-    let band_info = this.props.band_info;
+    const {fullScreen} = this.props;
 
     return (
       <div>
 
-        <Button className="button" onClick={this.handleClickOpen}>Edit Tour Information</Button>
+        <Button className="button" variant="contained" onClick={this.handleClickOpen}>Edit Tour Information</Button>
         <Dialog
+          fullScreen={fullScreen}
           open={this.state.open}
           onClose={this.handleClose}
           aria-labelledby="responsive-dialog-title"
         >
-          <DialogTitle id="responsive-dialog-title">{"Edit Item"}</DialogTitle>
+          <DialogTitle id="responsive-dialog-title">{"Edit Tour Information"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              <label> Band Name
-                <input type="text" value={band_info.name} onChange={this.handleChangeFor('name')} />
+              <label> Band Name 
+                <input type="text" value={this.state.name} onChange={this.handleChangeFor('name')} />
               </label>
               <br />
-              <label> Tech Rider
-                <input type="text" value={band_info.tech_rider} onChange={this.handleChangeFor('tech_rider')} />
+              <label> Tech Rider 
+                <textarea type="text" value={this.state.tech_rider} onChange={this.handleChangeFor('tech_rider')} />
               </label>
               <br />
-              <label> Band Rider
-                <input type="text" value={band_info.band_rider} onChange={this.handleChangeFor('band_rider')} />
+              <label> Band Rider 
+                <textarea type="text" value={this.state.band_rider} onChange={this.handleChangeFor('band_rider')} />
               </label>
               <br />
-              <label> Stage Plot
-                <input type="text" value={band_info.stage_plot} onChange={this.handleChangeFor('stage_plot')} />
+              <label> Stage Plot 
+                <textarea type="text" value={this.state.stage_plot} onChange={this.handleChangeFor('stage_plot')} />
               </label>
               <br />
-              <label> Input List
-                <input type="text" value={band_info.input_list} onChange={this.handleChangeFor('input_list')} />
+              <label> Input List 
+                <textarea type="text" value={this.state.input_list} onChange={this.handleChangeFor('input_list')} />
               </label>
               <br />
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
+            <Button onClick={this.handleClose} color="secondary">
               Cancel
             </Button>
             <Button onClick={this.updateState} color="primary" autoFocus>
@@ -101,6 +108,7 @@ const mapStateToProps = state => {
   return {
     state,
     band_info: state.band_info,
+    user: state.user,
   };
 }
 
