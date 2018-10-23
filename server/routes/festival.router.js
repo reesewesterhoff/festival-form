@@ -19,7 +19,15 @@ router.get('/', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-
+    let festival = req.body;
+    pool.query(`INSERT INTO "festival" ("name", "date", "image", "address")
+                VALUES ($1, $2, $3, $4);`, [festival.name, festival.date, festival.image, festival.address])
+    .then(() => {
+        res.sendStatus(201);
+    }).catch(error => {
+        console.log('Error posting new festival', error);
+        res.sendStatus(500);
+    });
 });
 
 module.exports = router;

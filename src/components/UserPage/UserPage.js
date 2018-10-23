@@ -20,7 +20,7 @@ class UserPage extends Component {
     return (
       <div>
         <h1 id="welcome">
-          Welcome, { this.props.user.username }!
+          Welcome, { this.props.user.first_name }!
         </h1>
         <br />
         <h2>All Festivals</h2>

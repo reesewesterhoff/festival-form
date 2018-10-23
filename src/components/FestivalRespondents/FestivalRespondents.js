@@ -5,7 +5,6 @@ import FestivalRespondentItem from '../FestivalRespondentItem/FestivalRespondent
 class FestivalRespondents extends Component {
 
     componentDidMount() {
-        console.log('fest respondents', this.props.festivalRespondents);
         
     }
 

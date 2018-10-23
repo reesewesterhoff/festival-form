@@ -24,6 +24,7 @@ import BandInfoForm from '../BandInfoForm/BandInfoForm';
 import './App.css';
 import AdminHome from '../AdminHome/AdminHome';
 import FestivalRespondents from '../FestivalRespondents/FestivalRespondents';
+import CreateFestForm from '../CreateFestForm/CreateFestForm';
 
 class App extends Component {
   componentDidMount () {
@@ -80,7 +81,7 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/createfest"
-              component={BandInfoForm}
+              component={CreateFestForm}
             />
             <ProtectedRoute 
               exact

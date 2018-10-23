@@ -19,9 +19,18 @@ function* festivalResponse(action) {
     }
 }
 
+function* createFestival(action) {
+    try {
+        yield call(axios.post, '/api/festival', action.payload);
+    } catch (error) {
+        console.log('Error creating new festival', error);
+    }
+}
+
 function* festivalSaga() {
     yield takeLatest('FETCH_ALL_FESTIVALS', fetchAllFestivals);
     yield takeLatest('FESTIVAL_RESPONSE', festivalResponse);
+    yield takeLatest('CREATE_FESTIVAL', createFestival);
   }
   
   export default festivalSaga;
