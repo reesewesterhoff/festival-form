@@ -5,10 +5,10 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
-    console.log('req.user.id', req.user.id);
+router.get('/:id', (req, res) => {
+    console.log('req.params.id', req.params.id);
     pool.query(`SELECT * FROM "festival_band_info"
-                WHERE "festival_id"=$1`, [req.user.id])
+                WHERE "festival_id"=$1`, [req.params.id])
     .then(results => {
         res.send(results.rows);
     }).catch(error => {

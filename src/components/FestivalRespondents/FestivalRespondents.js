@@ -5,6 +5,7 @@ import FestivalRespondentItem from '../FestivalRespondentItem/FestivalRespondent
 class FestivalRespondents extends Component {
 
     componentDidMount() {
+        console.log('fest respondents', this.props.festivalRespondents);
         
     }
 
@@ -14,7 +15,6 @@ class FestivalRespondents extends Component {
 
         return (
             <div>
-                FestivalDetail
                 {fest.id ? 
                 <ul>
                     <li>{fest.name}</li>
@@ -28,6 +28,7 @@ class FestivalRespondents extends Component {
                 <br />
                 <hr />
                 <br />
+                {this.props.festivalRespondents.length!==0 ?
                 <table>
                     <thead>
                         <tr>
@@ -67,6 +68,8 @@ class FestivalRespondents extends Component {
                         )}
                     </tbody>
                 </table>
+                :
+                'No Respondents Yet!'}
             </div>
         );
     }
