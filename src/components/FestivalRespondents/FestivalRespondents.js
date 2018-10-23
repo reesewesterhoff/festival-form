@@ -57,15 +57,15 @@ class FestivalRespondents extends Component {
                             </th>
                         </tr>
                     </thead>
-                    {/* <tbody>
-                        {this.props.fest_respondents.map(respondent => {
-                                <FestivalRespondentItem 
-                                    key={respondent.id}
-                                    respondent={respondent}
-                                />
+                    <tbody>
+                        {this.props.festivalRespondents.map(respondent => {
+                               return   <FestivalRespondentItem 
+                                            key={respondent.id}
+                                            respondent={respondent}
+                                        />
                             }
                         )}
-                    </tbody> */}
+                    </tbody>
                 </table>
             </div>
         );
@@ -75,7 +75,8 @@ class FestivalRespondents extends Component {
 const mapStateToProps = state => {
     return { 
         state,
-        festToRespond: state.festToRespond, 
+        festToRespond: state.festToRespond,
+        festivalRespondents: state.festivalRespondents 
     }
 }
 
