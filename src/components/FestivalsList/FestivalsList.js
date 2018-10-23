@@ -6,7 +6,6 @@ import { withRouter } from 'react-router-dom';
 class FestivalsList extends Component {
 
     respondToFestival = (festival) => {
-        console.log('festival clicked', festival);
         this.props.dispatch({type: 'FESTIVAL_RESPONSE', payload: festival});
         this.props.dispatch({type: 'FETCH_BAND_INFO', payload: this.props.user.id});
         this.props.history.push("/festivaldetail")

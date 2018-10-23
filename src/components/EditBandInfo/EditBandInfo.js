@@ -12,17 +12,19 @@ import { connect } from 'react-redux';
 class ResponsiveDialog extends React.Component {
   state = {
     open: false,
-    id: this.props.item.id,
-    description: this.props.item.description,
-    image_url: this.props.item.image_url,
+    name: this.props.band_info.name,
+    tech_rider: this.props.band_info.tech_rider,
+    band_rider: this.props.band_info.band_rider,
+    stage_plot: this.props.band_info.stage_plot,
+    input_list: this.props.band_info.input_list,
   };
 
-handleChangeFor = property => event => {
+  handleChangeFor = property => event => {
     this.setState({
-        ...this.state,
-        [property]: event.target.value,
+      ...this.state,
+      [property]: event.target.value,
     });
-}
+  }
 
   handleClickOpen = () => {
     this.setState({ open: true });
@@ -34,19 +36,18 @@ handleChangeFor = property => event => {
 
 
   updateState = () => {
-    this.props.dispatch({type:'UPDATE_BAND_INFO', payload:this.state});
-    console.log('hey???')
+    this.props.dispatch({ type: 'UPDATE_BAND_INFO', payload: this.state });
     this.handleClose();
-}
+  }
 
   render() {
 
-    
+    let band_info = this.props.band_info;
 
     return (
       <div>
-          
-        <Button className="button"onClick={this.handleClickOpen}>Edit Item</Button>
+
+        <Button className="button" onClick={this.handleClickOpen}>Edit Tour Information</Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
@@ -55,8 +56,26 @@ handleChangeFor = property => event => {
           <DialogTitle id="responsive-dialog-title">{"Edit Item"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-            <input value={this.state.description} onChange={this.handleChangeFor('description')} />
-            <input value={this.state.image_url} onChange={this.handleChangeFor('image_url')} />
+              <label> Band Name
+                <input type="text" value={band_info.name} onChange={this.handleChangeFor('name')} />
+              </label>
+              <br />
+              <label> Tech Rider
+                <input type="text" value={band_info.tech_rider} onChange={this.handleChangeFor('tech_rider')} />
+              </label>
+              <br />
+              <label> Band Rider
+                <input type="text" value={band_info.band_rider} onChange={this.handleChangeFor('band_rider')} />
+              </label>
+              <br />
+              <label> Stage Plot
+                <input type="text" value={band_info.stage_plot} onChange={this.handleChangeFor('stage_plot')} />
+              </label>
+              <br />
+              <label> Input List
+                <input type="text" value={band_info.input_list} onChange={this.handleChangeFor('input_list')} />
+              </label>
+              <br />
             </DialogContentText>
           </DialogContent>
           <DialogActions>
@@ -79,11 +98,11 @@ ResponsiveDialog.propTypes = {
 
 
 const mapStateToProps = state => {
-    return { 
-      state,
-      band_info: band_info.state
-    };
+  return {
+    state,
+    band_info: state.band_info,
+  };
 }
 
 
-export default connect(mapStateToProps) (withMobileDialog()(ResponsiveDialog));
+export default connect(mapStateToProps)(withMobileDialog()(ResponsiveDialog));

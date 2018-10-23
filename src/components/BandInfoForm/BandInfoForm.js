@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import EditBandInfo from '../EditBandInfo/EditBandInfo';
 
 class BandInfoForm extends Component {
 
@@ -35,6 +36,10 @@ class BandInfoForm extends Component {
         
     };
 
+    componentDidMount() {
+        this.props.dispatch({type: 'FETCH_BAND_INFO', payload: this.props.user.id});
+    }
+
 
 
     render() {
@@ -47,23 +52,25 @@ class BandInfoForm extends Component {
                     </label>
                     <br />
                     <label> Tech Rider
-                        <input type="text" onChange={this.handleChangeFor('tech_rider')} />
+                        <textarea type="text" onChange={this.handleChangeFor('tech_rider')} />
                     </label>
                     <br />
                     <label> Band Rider
-                        <input type="text" onChange={this.handleChangeFor('band_rider')} />
+                        <textarea type="text" onChange={this.handleChangeFor('band_rider')} />
                     </label>
                     <br />
                     <label> Stage Plot
-                        <input type="text" onChange={this.handleChangeFor('stage_plot')} />
+                        <textarea type="text" onChange={this.handleChangeFor('stage_plot')} />
                     </label>
                     <br />
                     <label> Input List
-                        <input type="text" onChange={this.handleChangeFor('input_list')} />
+                        <textarea type="text" onChange={this.handleChangeFor('input_list')} />
                     </label>
                     <br />
                     <input type="submit" value="Submit" />
                 </form>
+                <hr />
+                <EditBandInfo />
             </div>
         );
     }
@@ -71,7 +78,7 @@ class BandInfoForm extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.user
+        user: state.user,
     }
 }
 

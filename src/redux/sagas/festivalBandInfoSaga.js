@@ -11,7 +11,6 @@ import axios from 'axios';
 // }
 
 function* addFestivalBandInfo(action) {
-    console.log('post request fest_band_info', action.payload);
     try {
         yield call(axios.post, '/api/fest_band_info', action.payload);
         // yield put({type: 'FETCH_BAND_INFO'});

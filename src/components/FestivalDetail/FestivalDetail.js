@@ -23,21 +23,6 @@ class FestivalDetail extends Component {
         
     }
 
-    // getFestInfo = () => {
-    //     axios({
-    //         method: 'GET',
-    //         url: `/api/festival`
-    //     }).then(response => {
-    //         console.log('festival get response', response.data);
-    //         this.setState({
-    //             festivals: response.data,
-    //         });
-    //     }).catch(error => {
-    //         alert('Error getting festivals');
-    //         console.log('error get fests', error);
-    //     });
-    // }
-
 
     handleChangeFor = propertyName => event => {
         this.setState({
@@ -59,17 +44,6 @@ class FestivalDetail extends Component {
                 notes: ''
             }
         });
-        console.log(this.state.response); 
-        // axios({    
-        //     method: 'POST',
-        //     url: '/festival',
-        //     data: this.state.response
-        // }).then((response) => {
-        //     console.log(response);
-        // }).catch(error => {
-        //     console.log('error posting', error);
-        //     alert('Error submitting response');
-        // });
     };
 
 
@@ -97,10 +71,6 @@ class FestivalDetail extends Component {
                         <input type="text"  onChange={this.handleChangeFor('arrival_time')} />
                     </label>
                     <br />
-                    {/* <label> Band Name
-                        <input type="text"  onChange={this.handleChangeFor('name')} />
-                    </label>
-                    <br /> */}
                     <label> Notes
                         <input type="textArea"  onChange={this.handleChangeFor('notes')} />
                     </label>

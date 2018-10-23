@@ -2,8 +2,6 @@ import { put, takeLatest, call } from 'redux-saga/effects';
 import axios from 'axios';
 
 function* fetchBandInfo(action) {
-    console.log('saga side get', action.payload);
-    
     try {
         const elementResponse = yield call(axios.get, `/api/band`, {id: action.payload} );
         yield put({type: 'SET_BAND_INFO', payload: elementResponse.data});
@@ -13,7 +11,6 @@ function* fetchBandInfo(action) {
 }
 
 function* addBandInfo(action) {
-    console.log('post request', action.payload);
     try {
         yield call(axios.post, '/api/band', action.payload);
         yield put({type: 'FETCH_BAND_INFO'});
