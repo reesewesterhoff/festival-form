@@ -12,8 +12,8 @@ class FestivalsList extends Component {
     }
 
     reviewFestival = (festival) => {
-        console.log('review fest clicked');
         this.props.dispatch({type: 'FESTIVAL_RESPONSE', payload: festival});
+        this.props.dispatch({type: 'FETCH_FEST_RESPONDENTS', payload: festival.id})
         this.props.history.push("/festresponse")
     }
 

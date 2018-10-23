@@ -6,7 +6,15 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
-    
+    console.log('req.user.id', req.user.id);
+    pool.query(`SELECT * FROM "festival_band_info"
+                WHERE "festival_id"=$1`, [req.user.id])
+    .then(results => {
+        res.send(results.rows);
+    }).catch(error => {
+        console.log('Error getting festival respondents', error);
+        res.sendStatus(500);
+    });
 });
 
 /**

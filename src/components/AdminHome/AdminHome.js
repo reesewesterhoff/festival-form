@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import FestivalsList from '../FestivalsList/FestivalsList';
 
-class UserPage extends Component {
+class AdminHome extends Component {
   logout = () => {
     this.props.dispatch({ type: 'LOGOUT' });
   }
@@ -40,4 +40,4 @@ const mapStateToProps = state => ({
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+export default connect(mapStateToProps)(AdminHome);
