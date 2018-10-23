@@ -34,6 +34,7 @@ class FestivalsList extends Component {
                     <tbody>
                         {this.props.festivals.map(festival => {
                             return <FestivalItem 
+                                        id={this.props.id}
                                         key={festival.id}
                                         festival={festival}
                                         respondToFestival={this.respondToFestival}

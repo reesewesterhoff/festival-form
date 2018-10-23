@@ -10,9 +10,6 @@ class UserPage extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ALL_FESTIVALS'});
-    this.props.dispatch({type: 'FETCH_BAND_INFO', payload: this.props.user.id});
-    console.log('user id userpage', this.props.user.id);
-    
   }
 
 
@@ -25,7 +22,7 @@ class UserPage extends Component {
         <br />
         <h2>All Festivals</h2>
        <FestivalsList 
-          id={this.props.user.id}
+            id={this.props.user.id}
        />
         <p>Your ID is: {this.props.user.id}</p>
         <LogOutButton className="log-in" />
@@ -44,4 +41,3 @@ const mapStateToProps = state => ({
 
 // this allows us to use <App /> in index.js
 export default connect(mapStateToProps)(UserPage);
-

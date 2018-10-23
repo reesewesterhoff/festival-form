@@ -4,6 +4,21 @@ import { connect } from 'react-redux';
 
 const UserNav = (props) => (
   <div className="nav">
+  {/* ask??? */}
+    <Link to="/adminhome"> 
+    </Link>
+    <div>
+      {props.user.id===1 && (
+      <div>
+      <Link className="nav-link" to="/adminhome">
+        Admin Home
+      </Link>
+      <Link className="nav-link" to="/createfest">
+        Create Festival
+      </Link>
+      </div>
+      )}
+    </div>
     <Link to="/home">
     </Link>
     <div>
@@ -16,14 +31,11 @@ const UserNav = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
-          <Link className="nav-link" to="/info">
-            Info Page
-          </Link>
           <Link className="nav-link" to="/festivaldetail">
             Detailed Festival
           </Link>
-          <Link className="nav-link" to="/bandinfo">
-            Band Info
+          <Link className="nav-link" to="/tourinfo">
+            My Tour Info
           </Link>
         </>
       )}
@@ -35,9 +47,6 @@ const UserNav = (props) => (
         </>
         )} */}
       {/* Always show this link since the about page is not protected */}
-      <Link className="nav-link" to="/about">
-        About
-      </Link>
     </div>
   </div>
 );

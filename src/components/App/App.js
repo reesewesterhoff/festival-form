@@ -22,6 +22,7 @@ import FestivalDetail from '../FestivalDetail/FestivalDetail';
 import BandInfoForm from '../BandInfoForm/BandInfoForm';
 
 import './App.css';
+import AdminHome from '../AdminHome/AdminHome';
 
 class App extends Component {
   componentDidMount () {
@@ -67,7 +68,17 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/bandinfo"
+              path="/tourinfo"
+              component={BandInfoForm}
+            />
+            <ProtectedRoute
+              exact
+              path="/adminhome"
+              component={AdminHome}
+            />
+            <ProtectedRoute
+              exact
+              path="/createfest"
               component={BandInfoForm}
             />
             {/* If none of the other routes matched, we will show a 404. */}
