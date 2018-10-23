@@ -11,6 +11,12 @@ class FestivalsList extends Component {
         this.props.history.push("/festivaldetail")
     }
 
+    reviewFestival = (festival) => {
+        console.log('review fest clicked');
+        this.props.dispatch({type: 'FESTIVAL_RESPONSE', payload: festival});
+        this.props.history.push("/festresponse")
+    }
+
     render() {
         return (
             <div>
@@ -38,6 +44,7 @@ class FestivalsList extends Component {
                                         key={festival.id}
                                         festival={festival}
                                         respondToFestival={this.respondToFestival}
+                                        reviewFestival={this.reviewFestival}
                                     />
                             }
                         )}

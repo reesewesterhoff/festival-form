@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 class FestivalItem extends Component {
 
     componentDidMount() {
-        console.log('user id', this.props.id);
         
     }
 
@@ -19,7 +18,7 @@ class FestivalItem extends Component {
                 {
                     this.props.id === 1 ?
                         <td>
-                            <button onClick={() => this.props.respondToFestival(this.props.festival)}>Review</button>
+                            <button onClick={() => this.props.reviewFestival(this.props.festival)}>Review</button>
                         </td>
                         :
                         <td>
