@@ -20,7 +20,7 @@ class AdminHome extends Component {
           Welcome, { this.props.user.first_name }!
         </h1>
         <br />
-        <h2>All Festivals</h2>
+        <h2>Active Festivals</h2>
        <FestivalsList 
             id={this.props.user.id}
        />
