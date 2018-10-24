@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
+import EditFestival from '../EditFestival/EditFestival';
 
 class FestivalItem extends Component {
 

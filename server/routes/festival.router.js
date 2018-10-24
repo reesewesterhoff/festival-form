@@ -42,4 +42,16 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+router.put('/:id', (req, res) => {
+    let body = req.body;
+    pool.query(`UPDATE "festival" SET "name"=$1, "date"=$2, "address"=$3, "image"=$4
+    WHERE "id"=$5;`, [body.name, body.date, body.address, body.image, req.params.id])
+    .then(() => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('Error updating festival info', error);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;

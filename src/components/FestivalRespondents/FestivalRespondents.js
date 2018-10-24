@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FestivalRespondentItem from '../FestivalRespondentItem/FestivalRespondentItem';
 import moment from 'moment';
+import EditFestival from '../EditFestival/EditFestival';
 
 class FestivalRespondents extends Component {
 
@@ -28,6 +29,9 @@ class FestivalRespondents extends Component {
                     <li>{fest.address}</li>
                     <li>
                         <img src={fest.image} height="200" />
+                    </li>
+                    <li>
+                        <EditFestival />
                     </li>
                 </ul>
                 : null }

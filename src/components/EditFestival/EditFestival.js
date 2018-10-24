@@ -10,14 +10,14 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import { connect } from 'react-redux';
 
 class ResponsiveDialog extends React.Component {
-  state = {
+  
+    state = {
     open: false,
-    name: this.props.band_info.name,
-    tech_rider: this.props.band_info.tech_rider,
-    band_rider: this.props.band_info.band_rider,
-    stage_plot: this.props.band_info.stage_plot,
-    input_list: this.props.band_info.input_list,
-    id: this.props.user.id,
+    name: this.props.festToRespond.name,
+    date: this.props.festToRespond.date,
+    address: this.props.festToRespond.address,
+    image: this.props.festToRespond.image,
+    id: this.props.festToRespond.id,
   };
 
   handleChangeFor = property => event => {
@@ -28,7 +28,7 @@ class ResponsiveDialog extends React.Component {
   }
 
   handleClickOpen = () => {
-    this.props.dispatch({type: 'FETCH_BAND_INFO', payload: this.props.user.id});
+    this.props.dispatch({type: 'FESTIVAL_RESPONSE', payload: this.props.festToRespond});
     this.setState({ open: true });
   };
 
@@ -38,7 +38,8 @@ class ResponsiveDialog extends React.Component {
 
 
   updateState = () => {
-    this.props.dispatch({ type: 'UPDATE_BAND_INFO', payload: this.state });
+    this.props.dispatch({ type: 'UPDATE_FESTIVAL', payload: this.state });
+    this.props.dispatch({type: 'FESTIVAL_RESPONSE', payload: this.props.festToRespond});
     this.handleClose();
   }
 
@@ -53,7 +54,7 @@ class ResponsiveDialog extends React.Component {
     return (
       <div>
 
-        <Button className="button" variant="contained" onClick={this.handleClickOpen}>Edit Tour Information</Button>
+        <Button className="button" variant="contained" onClick={this.handleClickOpen}>Edit Festival Information</Button>
         <Dialog
           fullScreen={fullScreen}
           open={this.state.open}
@@ -63,24 +64,20 @@ class ResponsiveDialog extends React.Component {
           <DialogTitle id="responsive-dialog-title">{"Edit Tour Information"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              <label> Band Name 
+              <label> Festival Name 
                 <input type="text" value={this.state.name} onChange={this.handleChangeFor('name')} />
               </label>
               <br />
-              <label> Tech Rider 
-                <textarea type="text" value={this.state.tech_rider} onChange={this.handleChangeFor('tech_rider')} />
+              <label> Date 
+                <textarea type="text" value={this.state.date} onChange={this.handleChangeFor('date')} />
               </label>
               <br />
-              <label> Band Rider 
-                <textarea type="text" value={this.state.band_rider} onChange={this.handleChangeFor('band_rider')} />
+              <label> Address 
+                <textarea type="text" value={this.state.address} onChange={this.handleChangeFor('address')} />
               </label>
               <br />
-              <label> Stage Plot 
-                <textarea type="text" value={this.state.stage_plot} onChange={this.handleChangeFor('stage_plot')} />
-              </label>
-              <br />
-              <label> Input List 
-                <textarea type="text" value={this.state.input_list} onChange={this.handleChangeFor('input_list')} />
+              <label> Image Url 
+                <textarea type="text" value={this.state.image} onChange={this.handleChangeFor('image')} />
               </label>
               <br />
             </DialogContentText>
@@ -106,9 +103,7 @@ ResponsiveDialog.propTypes = {
 
 const mapStateToProps = state => {
   return {
-    state,
-    band_info: state.band_info,
-    user: state.user,
+    festToRespond: state.festToRespond,
   };
 }
 
