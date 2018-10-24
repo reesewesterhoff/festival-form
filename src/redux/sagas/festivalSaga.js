@@ -27,10 +27,20 @@ function* createFestival(action) {
     }
 }
 
+function* deleteFestival(action) {
+    try {
+        yield call(axios.delete, `/api/festival/${action.payload}`);
+        yield put({type: 'FETCH_ALL_FESTIVALS'});
+    } catch (error) {
+        console.log('Error deleting festival');
+    }
+}
+
 function* festivalSaga() {
     yield takeLatest('FETCH_ALL_FESTIVALS', fetchAllFestivals);
     yield takeLatest('FESTIVAL_RESPONSE', festivalResponse);
     yield takeLatest('CREATE_FESTIVAL', createFestival);
+    yield takeLatest('DELETE_FESTIVAL', deleteFestival);
   }
   
   export default festivalSaga;

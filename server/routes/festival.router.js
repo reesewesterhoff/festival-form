@@ -30,4 +30,16 @@ router.post('/', (req, res) => {
     });
 });
 
+
+router.delete('/:id', (req, res) => {
+    let id = req.params.id;
+    pool.query(`DELETE FROM "festival" WHERE "id"=$1`, [id])
+    .then(() => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('Error deleting festival', error);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;

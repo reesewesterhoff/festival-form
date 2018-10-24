@@ -19,6 +19,11 @@ class FestivalsList extends Component {
         this.props.history.push("/festresponse")
     }
 
+    deleteFestival = (festId) => {
+        console.log('delete clickedd', festId);
+        this.props.dispatch({type: 'DELETE_FESTIVAL', payload: festId});
+    }
+
     render() {
         return (
             <div>
@@ -47,6 +52,7 @@ class FestivalsList extends Component {
                                         festival={festival}
                                         respondToFestival={this.respondToFestival}
                                         reviewFestival={this.reviewFestival}
+                                        deleteFestival={this.deleteFestival}
                                     />
                             }
                         )}

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class FestivalItem extends Component {
 
     componentDidMount() {
-        
+
     }
 
     render() {
@@ -17,14 +17,19 @@ class FestivalItem extends Component {
                 </td>
                 {
                     this.props.id === 1 ?
+                    <>
                         <td>
                             <button onClick={() => this.props.reviewFestival(this.props.festival)}>Review</button>
                         </td>
+                        <td>
+                            <button onClick={() => this.props.deleteFestival(this.props.festival.id)}>Delete Festival</button>
+                        </td>
+                    </>
                         :
                         <td>
                             <button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</button>
                         </td>
-                        
+
                 }
             </tr>
         );
