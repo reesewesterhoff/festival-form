@@ -21,6 +21,9 @@ class FestivalItem extends Component {
                     this.props.id === 1 ?
                     <>
                         <td>
+                            <button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</button>
+                        </td>
+                        <td>
                             <button onClick={() => this.props.reviewFestival(this.props.festival)}>Review</button>
                         </td>
                         <td>
