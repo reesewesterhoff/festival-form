@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 class FestivalItem extends Component {
 
@@ -10,7 +11,7 @@ class FestivalItem extends Component {
         return (
             <tr>
                 <td>{this.props.festival.name}</td>
-                <td>{this.props.festival.date}</td>
+                <td>{moment(this.props.festival.date).format('MMMM Do YYYY')}</td>
                 <td>{this.props.festival.address}</td>
                 <td>
                     <img src={this.props.festival.image} height="200" />

@@ -42,13 +42,7 @@ const UserNav = (props) => (
           </Link>
         </>
       )}
-      {/* {props.user.id=1 && (
-        <>
-            <Link className="nav-link" to="/createfest">
-                Create Fest
-            </Link>
-        </>
-        )} */}
+      {/* <h3>moment().format('MMMM Do YYYY, h:mm:ss a');</h3> */}
       {/* Always show this link since the about page is not protected */}
     </div>
   </div>
