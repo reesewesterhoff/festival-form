@@ -69,7 +69,7 @@ class FestivalDetail extends Component {
                 <hr />
                 <form onSubmit={this.handleSubmit}>
                     <label> Arrival Time
-                        <input type="text"  onChange={this.handleChangeFor('arrival_time')} />
+                        <input type="time"  onChange={this.handleChangeFor('arrival_time')} />
                     </label>
                     <br />
                     <label> Notes

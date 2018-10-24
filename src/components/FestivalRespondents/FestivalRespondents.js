@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FestivalRespondentItem from '../FestivalRespondentItem/FestivalRespondentItem';
+import moment from 'moment';
 
 class FestivalRespondents extends Component {
 
     componentDidMount() {
         
+        
+    }
+
+    deleteRespondent = (respondent) => {
+        console.log(respondent);
+        this.props.dispatch({type: 'DELETE_RESPONDENT', payload: respondent});
     }
 
     render() {
@@ -17,7 +24,7 @@ class FestivalRespondents extends Component {
                 {fest.id ? 
                 <ul>
                     <li>{fest.name}</li>
-                    <li>{fest.date}</li>
+                    <li>{moment(fest.date).format('M-DD-YYYY')}</li>
                     <li>{fest.address}</li>
                     <li>
                         <img src={fest.image} height="200" />
@@ -62,6 +69,7 @@ class FestivalRespondents extends Component {
                                return   <FestivalRespondentItem 
                                             key={respondent.id}
                                             respondent={respondent}
+                                            deleteRespondent={this.deleteRespondent}
                                         />
                             }
                         )}

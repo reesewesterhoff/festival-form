@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 class FestivalRespondentItem extends Component {
 
@@ -17,9 +18,10 @@ class FestivalRespondentItem extends Component {
                 <td>
                     <img src={respondent.input_list} height="100" alt={respondent.input_list} />
                 </td>
-                <td>{respondent.arrival_time}</td>
+                <td>{moment(respondent.arrival_time, 'hh:mm:ss').format('h:mm A')}</td>
                 <td>{respondent.requests}</td>
                 <td>{respondent.notes}</td>
+                <td><button onClick={() => this.props.deleteRespondent(respondent)}>Delete</button></td>
             </tr>
         );
     }

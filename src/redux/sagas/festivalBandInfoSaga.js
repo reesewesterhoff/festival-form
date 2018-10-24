@@ -21,9 +21,23 @@ function* addFestivalBandInfo(action) {
     }
 }
 
+
+
+function* deleteRespondent(action) {
+    console.log('delete action payload', action.payload);
+    
+    try {
+        yield call(axios.delete, `/api/fest_band_info/delete/${action.payload.id}`);
+        yield put({type: 'FETCH_FEST_RESPONDENTS', payload: action.payload.festival_id});
+    } catch (error) {
+        console.log('Error deleting festival respondent', error);
+    }
+}
+
 function* festivalBandInfoSaga() {
     yield takeLatest('FETCH_FEST_RESPONDENTS', fetchFestRespondents);
     yield takeLatest('ADD_RESPONSE', addFestivalBandInfo);
+    yield takeLatest('DELETE_RESPONDENT', deleteRespondent);
   }
 
 

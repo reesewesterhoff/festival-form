@@ -6,7 +6,6 @@ const router = express.Router();
  * GET route template
  */
 router.get('/:id', (req, res) => {
-    console.log('req.params.id', req.params.id);
     pool.query(`SELECT * FROM "festival_band_info"
                 WHERE "festival_id"=$1`, [req.params.id])
     .then(results => {
@@ -33,6 +32,18 @@ router.post('/', (req, res) => {
         res.sendStatus(201);
     }).catch(error => {
         console.log('error posting', error);
+        res.sendStatus(500);
+    });
+});
+
+router.delete('/delete/:id', (req, res) => {
+    let id = req.params.id;
+    console.log('server side id to delete', id);
+    pool.query(`DELETE FROM "festival_band_info" WHERE "id"=$1`, [id])
+    .then(() => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('Error deleting fest respondent', error);
         res.sendStatus(500);
     });
 });
