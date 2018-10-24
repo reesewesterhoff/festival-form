@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 class FestivalDetail extends Component {
 
@@ -57,7 +58,7 @@ class FestivalDetail extends Component {
                 {fest.id ? 
                 <ul>
                     <li>{fest.name}</li>
-                    <li>{fest.date}</li>
+                    <li>{moment(fest.date).format('M-DD-YYYY')}</li>
                     <li>{fest.address}</li>
                     <li>
                         <img src={fest.image} height="200" />
