@@ -1,6 +1,34 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import EditFestival from '../EditFestival/EditFestival';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+
+const styles = {
+    card: {
+        marginTop: 75,
+        minWidth: 275,
+        maxWidth: 400,
+
+    },
+    title: {
+        fontSize: 14,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+    nextButton: {
+        marginLeft: 100,
+    },
+    input: {
+        margin: 10,
+    }
+};
 
 class FestivalItem extends Component {
 
@@ -9,36 +37,46 @@ class FestivalItem extends Component {
     }
 
     render() {
-        return (
-            <tr>
-                <td>{this.props.festival.name}</td>
-                <td>{moment(this.props.festival.date).format('M-DD-YYYY')}</td>
-                <td>{this.props.festival.address}</td>
-                <td>
-                    <img src={this.props.festival.image} height="200" />
-                </td>
-                {
-                    this.props.id === 1 ?
-                    <>
-                        <td>
-                            <button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</button>
-                        </td>
-                        <td>
-                            <button onClick={() => this.props.reviewFestival(this.props.festival)}>Review</button>
-                        </td>
-                        <td>
-                            <button onClick={() => this.props.deleteFestival(this.props.festival.id)}>Delete Festival</button>
-                        </td>
-                    </>
-                        :
-                        <td>
-                            <button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</button>
-                        </td>
 
-                }
-            </tr>
+        const { classes } = this.props;
+
+        return (
+            <Card className={classes.card} >
+                <CardContent>
+                    <Typography variant="h3" gutterBottom>
+                        {this.props.festival.name}
+                        <br />
+
+                        <img src={this.props.festival.image} height="200" />
+
+                    </Typography>
+                    <Typography className={classes.pos} color="textSecondary" variant="h5">
+                        {moment(this.props.festival.date).format('M-DD-YYYY')}
+                        <br />
+                        {this.props.festival.address}
+                        <br />
+                    </Typography>
+                </CardContent>
+                <CardActions>
+                    {
+                        this.props.id === 1 ?
+                            <>
+                                <Button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button>
+                                <Button onClick={() => this.props.reviewFestival(this.props.festival)}>Review</Button>
+                                <Button onClick={() => this.props.deleteFestival(this.props.festival.id)}>Delete Festival</Button>
+
+                            </>
+                            :
+                            <Button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button>
+                    }
+                </CardActions>
+            </Card>
         );
     }
 }
 
-export default FestivalItem;
+FestivalItem.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(FestivalItem);
