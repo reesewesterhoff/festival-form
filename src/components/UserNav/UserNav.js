@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import moment from 'moment';
+import Time from '../Time/Time';
 
 const UserNav = (props) => (
   <div className="nav">
@@ -36,11 +38,12 @@ const UserNav = (props) => (
           </Link>
         </>
       )}
-      {/* <h3>moment().format('MMMM Do YYYY, h:mm:ss a');</h3> */}
-      {/* Always show this link since the about page is not protected */}
+      <Time />
     </div>
   </div>
 );
+
+
 
 // Instead of taking everything from state, we just want the user
 // object to determine if they are logged in

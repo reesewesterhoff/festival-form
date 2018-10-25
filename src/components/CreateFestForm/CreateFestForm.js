@@ -23,12 +23,10 @@ class CreateFestForm extends Component {
         console.log(this.state);
         this.props.dispatch({ type: 'CREATE_FESTIVAL', payload: this.state });
         this.setState({
-            state: {
                 name: '',
                 date: '',
                 address: '',
-                image: '',
-            }
+                image: '',   
         });  
     };
 
@@ -38,19 +36,19 @@ class CreateFestForm extends Component {
                 <h1>Create New Festival</h1>
                 <form onSubmit={this.handleSubmit}>
                 <label> Festival Name
-                        <input type="text" onChange={this.handleChangeFor('name')} />
+                        <input type="text" value={this.state.name} onChange={this.handleChangeFor('name')} />
                     </label>
                     <br />
                     <label> Date
-                        <input type="date" onChange={this.handleChangeFor('date')} />
+                        <input type="date" value={this.state.date} onChange={this.handleChangeFor('date')} />
                     </label>
                     <br />
                     <label> Address
-                        <input type="text" onChange={this.handleChangeFor('address')} />
+                        <input type="text" value={this.state.address} onChange={this.handleChangeFor('address')} />
                     </label>
                     <br />
                     <label> Photo Url
-                        <input type="text" onChange={this.handleChangeFor('image')} />
+                        <input type="text" value={this.state.image} onChange={this.handleChangeFor('image')} />
                     </label>
                     <br />
                     <input type="submit" value="Create Festival" />

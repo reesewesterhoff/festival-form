@@ -7,6 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 
 
 const styles = {
@@ -16,21 +17,19 @@ const styles = {
         maxWidth: 400,
         textAlign: 'center',
     },
-    title: {
-        fontSize: 14,
-    },
     pos: {
         marginBottom: 12,
     },
-    nextButton: {
-        marginLeft: 100,
-    },
-    input: {
+    countDown: {
+        textAlign: 'center',
+        color: 'CornflowerBlue',
         margin: 10,
     },
-    button: {
-
-    }
+    icon: {
+        margin: 10,
+        fontSize: 32,
+        float: 'right',
+    },
 };
 
 class FestivalItem extends Component {
@@ -49,10 +48,15 @@ class FestivalItem extends Component {
                     <Typography variant="h3" gutterBottom>
                         {this.props.festival.name}
                         <br />
+                    </Typography>
+                    <Typography className={classes.countDown} color="textSecondary" variant="h6">
+                        Happening {moment(this.props.festival.date, "YYYYMMDD").fromNow()}
+                    </Typography>
+                    <Typography>
                         <br />
                         <img src={this.props.festival.image} height="200" />
-
                     </Typography>
+                    <br />
                     <Typography className={classes.pos} color="textSecondary" variant="h5">
                         {moment(this.props.festival.date).format('M-DD-YYYY')}
                         <br />
@@ -66,8 +70,6 @@ class FestivalItem extends Component {
                             <>
                                 <Button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button>
                                 <Button onClick={() => this.props.reviewFestival(this.props.festival)}>Review</Button>
-
-
                             </>
                             :
                             <span><Button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button></span>
@@ -76,15 +78,14 @@ class FestivalItem extends Component {
                 <CardActions>
                     {
                         this.props.id === 1 ?
-                        <div>
-                            <br />
-                            <Button onClick={() => this.props.deleteFestival(this.props.festival.id)}>Delete Festival</Button>
-                        </div>
-                            : 
+                            <div>
+                                <Button onClick={() => this.props.deleteFestival(this.props.festival.id)}><DeleteRoundedIcon className={classes.icon} /></Button>
+                            </div>
+                            :
                             null
                     }
-                    <Typography color="textSecondary" variant="h5">
-                        Happens {moment(this.props.festival.date, "YYYYMMDD").fromNow()}
+                    <Typography className={classes.countDown} color="textSecondary" variant="h6">
+
                     </Typography>
                 </CardActions>
 

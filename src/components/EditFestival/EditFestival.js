@@ -61,7 +61,7 @@ class ResponsiveDialog extends React.Component {
           onClose={this.handleClose}
           aria-labelledby="responsive-dialog-title"
         >
-          <DialogTitle id="responsive-dialog-title">{"Edit Tour Information"}</DialogTitle>
+          <DialogTitle id="responsive-dialog-title">{"Edit Festival Information"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
               <label> Festival Name 
@@ -69,15 +69,15 @@ class ResponsiveDialog extends React.Component {
               </label>
               <br />
               <label> Date 
-                <textarea type="text" value={this.state.date} onChange={this.handleChangeFor('date')} />
+                <input type="text" value={this.state.date} onChange={this.handleChangeFor('date')} />
               </label>
               <br />
               <label> Address 
-                <textarea type="text" value={this.state.address} onChange={this.handleChangeFor('address')} />
+                <input type="text" value={this.state.address} onChange={this.handleChangeFor('address')} />
               </label>
               <br />
               <label> Image Url 
-                <textarea type="text" value={this.state.image} onChange={this.handleChangeFor('image')} />
+                <input type="text" value={this.state.image} onChange={this.handleChangeFor('image')} />
               </label>
               <br />
             </DialogContentText>

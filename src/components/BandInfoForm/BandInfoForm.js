@@ -53,23 +53,23 @@ class BandInfoForm extends Component {
                         <h2>Please enter current band information.</h2>
                         <form onSubmit={this.handleSubmit}>
                             <label> Band Name
-                        <input type="text" onChange={this.handleChangeFor('name')} />
+                        <input type="text" value={this.state.name} onChange={this.handleChangeFor('name')} />
                             </label>
                             <br />
                             <label> Tech Rider
-                        <textarea type="text" onChange={this.handleChangeFor('tech_rider')} />
+                        <textarea type="text" value={this.state.tech_rider} onChange={this.handleChangeFor('tech_rider')} />
                             </label>
                             <br />
                             <label> Band Rider
-                        <textarea type="text" onChange={this.handleChangeFor('band_rider')} />
+                        <textarea type="text" value={this.state.band_rider} onChange={this.handleChangeFor('band_rider')} />
                             </label>
                             <br />
                             <label> Stage Plot
-                        <textarea type="text" onChange={this.handleChangeFor('stage_plot')} />
+                        <textarea type="text" value={this.state.stage_plot} onChange={this.handleChangeFor('stage_plot')} />
                             </label>
                             <br />
                             <label> Input List
-                        <textarea type="text" onChange={this.handleChangeFor('input_list')} />
+                        <textarea type="text" value={this.state.input_list} onChange={this.handleChangeFor('input_list')} />
                             </label>
                             <br />
                             <input type="submit" value="Submit" />
