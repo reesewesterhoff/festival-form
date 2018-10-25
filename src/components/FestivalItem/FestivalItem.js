@@ -14,7 +14,7 @@ const styles = {
         marginTop: 75,
         minWidth: 275,
         maxWidth: 400,
-
+        textAlign: 'center',
     },
     title: {
         fontSize: 14,
@@ -27,6 +27,9 @@ const styles = {
     },
     input: {
         margin: 10,
+    },
+    button: {
+
     }
 };
 
@@ -41,12 +44,12 @@ class FestivalItem extends Component {
         const { classes } = this.props;
 
         return (
-            <Card className={classes.card} >
+            <Card className={classes.card}>
                 <CardContent>
                     <Typography variant="h3" gutterBottom>
                         {this.props.festival.name}
                         <br />
-
+                        <br />
                         <img src={this.props.festival.image} height="200" />
 
                     </Typography>
@@ -63,13 +66,28 @@ class FestivalItem extends Component {
                             <>
                                 <Button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button>
                                 <Button onClick={() => this.props.reviewFestival(this.props.festival)}>Review</Button>
-                                <Button onClick={() => this.props.deleteFestival(this.props.festival.id)}>Delete Festival</Button>
+
 
                             </>
                             :
-                            <Button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button>
+                            <span><Button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button></span>
                     }
                 </CardActions>
+                <CardActions>
+                    {
+                        this.props.id === 1 ?
+                        <div>
+                            <br />
+                            <Button onClick={() => this.props.deleteFestival(this.props.festival.id)}>Delete Festival</Button>
+                        </div>
+                            : 
+                            null
+                    }
+                    <Typography color="textSecondary" variant="h5">
+                        Happens {moment(this.props.festival.date, "YYYYMMDD").fromNow()}
+                    </Typography>
+                </CardActions>
+
             </Card>
         );
     }

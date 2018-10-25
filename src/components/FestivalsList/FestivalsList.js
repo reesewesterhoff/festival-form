@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import FestivalItem from '../FestivalItem/FestivalItem';
 import { withRouter } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
@@ -24,8 +23,6 @@ class FestivalsList extends Component {
     }
 
     reviewFestival = (festival) => {
-        console.log('festival id', festival.id);
-
         this.props.dispatch({ type: 'FESTIVAL_RESPONSE', payload: festival });
         this.props.dispatch({ type: 'FETCH_FEST_RESPONDENTS', payload: festival.id })
         this.props.history.push("/festresponse")
@@ -36,6 +33,7 @@ class FestivalsList extends Component {
         this.props.dispatch({ type: 'DELETE_FESTIVAL', payload: festId });
     }
 
+    
     render() {
 
         const {classes} = this.props;
