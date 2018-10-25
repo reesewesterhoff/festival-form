@@ -12,13 +12,10 @@ const UserNav = (props) => (
         <div>
           <Link className="nav-link" to="/adminhome">
             Admin Home
-      </Link>
+          </Link>
           <Link className="nav-link" to="/createfest">
             Create Festival
-      </Link>
-          <Link className="nav-link" to="/festresponse">
-            Fest Responses
-      </Link>
+          </Link>
         </div>
       )}
     </div>
@@ -34,9 +31,6 @@ const UserNav = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
-          <Link className="nav-link" to="/festivaldetail">
-            Detailed Festival
-          </Link>
           <Link className="nav-link" to="/tourinfo">
             My Tour Info
           </Link>

@@ -15,8 +15,8 @@ class BandInfoForm extends Component {
 
     handleChangeFor = propertyName => event => {
         this.setState({
-                ...this.state,
-                [propertyName]: event.target.value
+            ...this.state,
+            [propertyName]: event.target.value
         });
     };
 
@@ -33,11 +33,11 @@ class BandInfoForm extends Component {
                 input_list: '',
             }
         });
-        
+
     };
 
     componentDidMount() {
-        this.props.dispatch({type: 'FETCH_BAND_INFO', payload: this.props.user.id});
+        this.props.dispatch({ type: 'FETCH_BAND_INFO', payload: this.props.user.id });
     }
 
 
@@ -45,32 +45,38 @@ class BandInfoForm extends Component {
     render() {
         return (
             <div>
-                <h2>Please enter current band information.</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <label> Band Name
+                {this.props.band_info.id ?
+
+                    <EditBandInfo />
+                    :
+                    <>
+                        <h2>Please enter current band information.</h2>
+                        <form onSubmit={this.handleSubmit}>
+                            <label> Band Name
                         <input type="text" onChange={this.handleChangeFor('name')} />
-                    </label>
-                    <br />
-                    <label> Tech Rider
+                            </label>
+                            <br />
+                            <label> Tech Rider
                         <textarea type="text" onChange={this.handleChangeFor('tech_rider')} />
-                    </label>
-                    <br />
-                    <label> Band Rider
+                            </label>
+                            <br />
+                            <label> Band Rider
                         <textarea type="text" onChange={this.handleChangeFor('band_rider')} />
-                    </label>
-                    <br />
-                    <label> Stage Plot
+                            </label>
+                            <br />
+                            <label> Stage Plot
                         <textarea type="text" onChange={this.handleChangeFor('stage_plot')} />
-                    </label>
-                    <br />
-                    <label> Input List
+                            </label>
+                            <br />
+                            <label> Input List
                         <textarea type="text" onChange={this.handleChangeFor('input_list')} />
-                    </label>
-                    <br />
-                    <input type="submit" value="Submit" />
-                </form>
-                <hr />
-                <EditBandInfo />
+                            </label>
+                            <br />
+                            <input type="submit" value="Submit" />
+                        </form>
+                        <hr />
+                    </>
+                }
             </div>
         );
     }
@@ -79,6 +85,7 @@ class BandInfoForm extends Component {
 const mapStateToProps = state => {
     return {
         user: state.user,
+        band_info: state.band_info,
     }
 }
 
