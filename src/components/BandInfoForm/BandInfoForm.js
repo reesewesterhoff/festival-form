@@ -58,6 +58,7 @@ class BandInfoForm extends Component {
             <div>
                 {this.props.band_info.id ?
                     <>
+                        <h2>Your information is stored! Click the Update Tour Information button to edit.</h2>
                         <EditBandInfo />
                     </>
                     :

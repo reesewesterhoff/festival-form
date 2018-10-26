@@ -10,8 +10,21 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import { connect } from 'react-redux';
 import Uppy from '@uppy/core';
 import XHRUpload from '@uppy/xhr-upload';
-import { DashboardModal } from '@uppy/react';
 import UppyModal from '../UppyModal/UppyModal';
+import { withStyles } from '@material-ui/core/styles';
+
+
+const {styles} = {
+
+  h2: {
+    textAlign: 'center',
+    color: 'CornflowerBlue',
+  },
+  button: {
+    margin: 'auto',
+    width: 200,
+  }
+}
 
 class ResponsiveDialog extends React.Component {
   state = {
@@ -75,11 +88,12 @@ class ResponsiveDialog extends React.Component {
   render() {
 
     const { fullScreen } = this.props;
+    const {classes} = this.props;
 
     return (
       <div>
 
-        <Button className="button" variant="contained" onClick={this.handleClickOpen}>Edit Tour Information</Button>
+        <Button className={classes.button} variant="contained" onClick={this.handleClickOpen}>Edit Tour Information</Button>
         <Dialog
           fullScreen={fullScreen}
           open={this.state.open}
@@ -132,6 +146,7 @@ class ResponsiveDialog extends React.Component {
 
 ResponsiveDialog.propTypes = {
   fullScreen: PropTypes.bool.isRequired,
+  classes: PropTypes.object.isRequired,
 };
 
 
@@ -144,4 +159,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps)(withMobileDialog()(ResponsiveDialog));
+export default withStyles(styles)(connect(mapStateToProps)(withMobileDialog()(ResponsiveDialog)));
