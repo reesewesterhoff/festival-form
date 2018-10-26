@@ -29,8 +29,7 @@ const CustomTableCell = withStyles(theme => ({
 const styles = {
     card: {
         marginTop: 30,
-        marginLeft: 100,
-        minWidth: 275,
+        margin: 'auto',
         maxWidth: 400,
         textAlign: 'center',
         display: 'flex',
@@ -59,11 +58,6 @@ const styles = {
         margin: 'auto',
 
     },
-    row: {
-        '&:nth-of-type(odd)': {
-            backgroundColor: 'gray',
-        },
-    },
 };
 
 class FestivalRespondents extends Component {
@@ -81,6 +75,7 @@ class FestivalRespondents extends Component {
 
         return (
             <div>
+                <br />
                 {fest.id ?
                     <Card className={classes.card}>
                         <CardContent>
@@ -108,6 +103,8 @@ class FestivalRespondents extends Component {
                     : null}
                 <br />
                 <hr />
+                <br />
+                <h1 className={classes.h1}>{fest.name} Respondents</h1>
                 <br />
                 {this.props.festivalRespondents.length !== 0 ?
                     <Paper className={classes.root}>

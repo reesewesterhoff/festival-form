@@ -51,7 +51,7 @@ class FestivalItem extends Component {
 
         return (
             <Card className={classes.card} >
-                <CardContent onClick={() => this.props.reviewFestival(this.props.festival)}>
+                <CardContent>
                     <Typography variant="h3" gutterBottom>
                         {this.props.festival.name}
                         <br />
