@@ -8,6 +8,10 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import { connect } from 'react-redux';
+import Uppy from '@uppy/core';
+import XHRUpload from '@uppy/xhr-upload';
+import { DashboardModal } from '@uppy/react';
+import UppyModal from '../UppyModal/UppyModal';
 
 class ResponsiveDialog extends React.Component {
   state = {
@@ -20,6 +24,11 @@ class ResponsiveDialog extends React.Component {
     id: this.props.user.id,
   };
 
+  uppy = Uppy( {
+    restrictions: { maxNumberOfFiles: 1 },
+    autoProceed: false // true is cool behaviour, but this shows it off better
+} )
+
   handleChangeFor = property => event => {
     this.setState({
       ...this.state,
@@ -28,7 +37,7 @@ class ResponsiveDialog extends React.Component {
   }
 
   handleClickOpen = () => {
-    this.props.dispatch({type: 'FETCH_BAND_INFO', payload: this.props.user.id});
+    this.props.dispatch({ type: 'FETCH_BAND_INFO', payload: this.props.user.id });
     this.setState({ open: true });
   };
 
@@ -42,13 +51,30 @@ class ResponsiveDialog extends React.Component {
     this.handleClose();
   }
 
+  handleUploadInputFor = (thing) => {
+  return (uploadURL) => {
+    console.log(uploadURL);
+    this.setState({
+        ...this.state,
+        [thing]: uploadURL,
+    })
+  }
+}
+
   componentDidMount() {
-    
+    this.uppy.use(XHRUpload, {
+      endpoint: './fileupload'
+    })
+
+    this.uppy.on('complete', (result) => {
+      let url = 'images/' + result.successful[0].name;
+      this.handleUploadInputFor(url);
+    })
   }
 
   render() {
 
-    const {fullScreen} = this.props;
+    const { fullScreen } = this.props;
 
     return (
       <div>
@@ -63,24 +89,29 @@ class ResponsiveDialog extends React.Component {
           <DialogTitle id="responsive-dialog-title">{"Edit Tour Information"}</DialogTitle>
           <DialogContent>
             <DialogContentText>
-              <label> Band Name 
+              <label> Band Name
                 <input type="text" value={this.state.name} onChange={this.handleChangeFor('name')} />
               </label>
               <br />
-              <label> Tech Rider 
-                <textarea type="text" value={this.state.tech_rider} onChange={this.handleChangeFor('tech_rider')} />
+              <label> Tech Rider
+                {/* <input value={this.state.tech_rider} onChange={this.handleChangeFor('tech_rider')} /> */}
+                {/* <textarea type="text" value={this.state.tech_rider} onChange={this.handleChangeFor('tech_rider')} /> */}
+              <UppyModal handleUploadInput={this.handleUploadInputFor('tech_rider')}/>
               </label>
               <br />
-              <label> Band Rider 
-                <textarea type="text" value={this.state.band_rider} onChange={this.handleChangeFor('band_rider')} />
+              <label> Band Rider
+                {/* <textarea type="text" value={this.state.band_rider} onChange={this.handleChangeFor('band_rider')} /> */}
+                <UppyModal handleUploadInput={this.handleUploadInputFor('band_rider')}/>
               </label>
               <br />
-              <label> Stage Plot 
-                <textarea type="text" value={this.state.stage_plot} onChange={this.handleChangeFor('stage_plot')} />
+              <label> Stage Plot
+                {/* <textarea type="text" value={this.state.stage_plot} onChange={this.handleChangeFor('stage_plot')} /> */}
+                <UppyModal handleUploadInput={this.handleUploadInputFor('stage_plot')}/>
               </label>
               <br />
-              <label> Input List 
-                <textarea type="text" value={this.state.input_list} onChange={this.handleChangeFor('input_list')} />
+              <label> Input List
+                {/* <textarea type="text" value={this.state.input_list} onChange={this.handleChangeFor('input_list')} /> */}
+                <UppyModal handleUploadInput={this.handleUploadInputFor('input_list')}/>
               </label>
               <br />
             </DialogContentText>

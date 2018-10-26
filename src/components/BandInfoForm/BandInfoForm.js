@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditBandInfo from '../EditBandInfo/EditBandInfo';
+import UppyModal from '../UppyModal/UppyModal';
 
 class BandInfoForm extends Component {
 
@@ -36,6 +37,16 @@ class BandInfoForm extends Component {
 
     };
 
+    handleUploadInput = ( uploadURL ) => {
+        console.log( uploadURL );
+        this.setState( {
+            newInfoUpload: {
+                ...this.state.newInfoUpload,
+                path: uploadURL,
+            }
+        } )
+    }
+
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_BAND_INFO', payload: this.props.user.id });
     }
@@ -46,8 +57,9 @@ class BandInfoForm extends Component {
         return (
             <div>
                 {this.props.band_info.id ?
-
-                    <EditBandInfo />
+                    <>
+                        <EditBandInfo />
+                    </>
                     :
                     <>
                         <h2>Please enter current band information.</h2>
@@ -60,7 +72,7 @@ class BandInfoForm extends Component {
                         <textarea type="text" value={this.state.tech_rider} onChange={this.handleChangeFor('tech_rider')} />
                             </label>
                             <br />
-                            <label> Band Rider
+                            <label> Hospitality Rider
                         <textarea type="text" value={this.state.band_rider} onChange={this.handleChangeFor('band_rider')} />
                             </label>
                             <br />

@@ -7,16 +7,20 @@ class FestivalRespondentItem extends Component {
 
         let respondent = this.props.respondent;
 
-        return(
+        return (
             <tr>
                 <td>{respondent.name}</td>
-                <td>{respondent.tech_rider}</td>
-                <td>{respondent.band_rider}</td>
                 <td>
-                    <img src={respondent.stage_plot} height="200" alt={respondent.stage_plot} />
+                    <img src={respondent.tech_rider} width="400" alt="Technical rider" />
                 </td>
                 <td>
-                    <img src={respondent.input_list} height="200" alt={respondent.input_list} />
+                    <img src={respondent.band_rider} width="400" alt="Hospitality rider" />
+                </td>
+                <td>
+                    <img src={respondent.stage_plot} width="400" alt="Stage plot" />
+                </td>
+                <td>
+                    <img src={respondent.input_list} width="400" alt="Input list" />
                 </td>
                 <td>{moment(respondent.arrival_time, 'hh:mm:ss').format('h:mm A')}</td>
                 <td>{respondent.requests}</td>
