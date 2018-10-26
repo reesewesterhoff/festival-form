@@ -13,10 +13,10 @@ class FestivalRespondentItem extends Component {
                 <td>{respondent.tech_rider}</td>
                 <td>{respondent.band_rider}</td>
                 <td>
-                    <img src={respondent.stage_plot} height="100" alt={respondent.stage_plot} />
+                    <img src={respondent.stage_plot} height="200" alt={respondent.stage_plot} />
                 </td>
                 <td>
-                    <img src={respondent.input_list} height="100" alt={respondent.input_list} />
+                    <img src={respondent.input_list} height="200" alt={respondent.input_list} />
                 </td>
                 <td>{moment(respondent.arrival_time, 'hh:mm:ss').format('h:mm A')}</td>
                 <td>{respondent.requests}</td>

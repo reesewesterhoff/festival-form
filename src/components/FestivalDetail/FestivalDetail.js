@@ -6,11 +6,13 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import './FestivalDetail.css';
 
 
 const styles = {
     card: {
-        marginTop: 40,
+        marginTop: 30,
+        marginLeft: 100,
         minWidth: 275,
         maxWidth: 400,
         textAlign: 'center',
@@ -18,7 +20,6 @@ const styles = {
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-evenly',
-        margin: 'auto',
     },
     pos: {
         marginBottom: 12,
@@ -28,7 +29,9 @@ const styles = {
         color: 'CornflowerBlue',
         margin: 10,
     },
- 
+    h1: {
+        textAlign: 'center',
+    },
 };
 
 class FestivalDetail extends Component {
@@ -84,46 +87,52 @@ class FestivalDetail extends Component {
 
         return (
             <div>
-                {fest.id ?
-                    <Card className={classes.card}>
-                        <CardContent>
-                            <Typography variant="h3" gutterBottom>
-                                {fest.name}
-                                <br />
-                            </Typography>
-                            <Typography className={classes.countDown} color="textSecondary" variant="h6">
-                                Happening {moment(fest.date, "YYYYMMDD").fromNow()}
-                            </Typography>
-                            <Typography>
-                                <br />
-                                <img src={fest.image} height="200" />
-                            </Typography>
-                            <br />
-                            <Typography className={classes.pos} color="textSecondary" variant="h5">
-                                {moment(fest.date).format('M-DD-YYYY')}
-                                <br />
-                                {fest.address}
-                                <br />
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                : null}
-                <br />
-                <hr />
-                <form onSubmit={this.handleSubmit}>
-                    <label> Arrival Time
+                <div className="containerside">
+                    <h1 className={classes.h1}>Festival RSVP</h1>
+                    {fest.id ?
+                        <div className="side">
+                            <Card className={classes.card}>
+                                <CardContent>
+                                    <Typography variant="h3" gutterBottom>
+                                        {fest.name}
+                                        <br />
+                                    </Typography>
+                                    <Typography className={classes.countDown} color="textSecondary" variant="h6">
+                                        Happening {moment(fest.date, "YYYYMMDD").fromNow()}
+                                    </Typography>
+                                    <Typography>
+                                        <br />
+                                        <img src={fest.image} height="200" />
+                                    </Typography>
+                                    <br />
+                                    <Typography className={classes.pos} color="textSecondary" variant="h5">
+                                        {moment(fest.date).format('M-DD-YYYY')}
+                                        <br />
+                                        {fest.address}
+                                        <br />
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </div>
+                        : null}
+                    <br />
+                    <div className="side2">
+                        <form onSubmit={this.handleSubmit}>
+                            <label> Arrival Time
                         <input type="time" value={this.state.response.arrival_time} onChange={this.handleChangeFor('arrival_time')} />
-                    </label>
-                    <br />
-                    <label> Notes
+                            </label>
+                            <br />
+                            <label> Notes
                         <input type="textArea" value={this.state.response.notes} onChange={this.handleChangeFor('notes')} />
-                    </label>
-                    <br />
-                    <label> Requests
+                            </label>
+                            <br />
+                            <label> Requests
                         <input type="textArea" value={this.state.response.requests} onChange={this.handleChangeFor('requests')} />
-                    </label>
-                    <input type="submit" value="Submit" />
-                </form>
+                            </label>
+                            <input type="submit" value="Submit" />
+                        </form>
+                    </div>
+                </div>
             </div>
         );
     }

@@ -26,9 +26,16 @@ const styles = {
         margin: 10,
     },
     icon: {
-        margin: 10,
+        margin: 2,
         fontSize: 32,
-        float: 'right',
+        textAlign: 'right',
+    },
+    buttons: {
+        width: 400,
+        margin: 'auto',
+    },
+    button: {
+        marginLeft: 8,
     },
 };
 
@@ -43,8 +50,8 @@ class FestivalItem extends Component {
         const { classes } = this.props;
 
         return (
-            <Card className={classes.card}>
-                <CardContent>
+            <Card className={classes.card} >
+                <CardContent onClick={() => this.props.reviewFestival(this.props.festival)}>
                     <Typography variant="h3" gutterBottom>
                         {this.props.festival.name}
                         <br />
@@ -67,15 +74,19 @@ class FestivalItem extends Component {
                 <CardActions>
                     {
                         this.props.id === 1 ?
-                            <>
-                                <Button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button>
-                                <Button onClick={() => this.props.reviewFestival(this.props.festival)}>Review</Button>
-                            </>
+                            <div className={classes.buttons}>
+                                <Button className={classes.button} size="large" variant="outlined" color="primary" onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button>
+                                <Button className={classes.button} size="large" variant="outlined" onClick={() => this.props.reviewFestival(this.props.festival)}>Review</Button>
+                                <Button className={classes.button} size="large" variant="outlined" color="secondary" onClick={() => this.props.deleteFestival(this.props.festival.id)}>Delete</Button>
+                            </div>
                             :
-                            <span><Button onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button></span>
+                            <div className={classes.buttons}>
+                                <Button size="large" variant="outlined" color="primary" onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button>
+                            </div>
                     }
+                    <br />
                 </CardActions>
-                <CardActions>
+                {/* <CardActions>
                     {
                         this.props.id === 1 ?
                             <div>
@@ -84,12 +95,11 @@ class FestivalItem extends Component {
                             :
                             null
                     }
-                    <Typography className={classes.countDown} color="textSecondary" variant="h6">
-
-                    </Typography>
-                </CardActions>
-
+                </CardActions> */}
+                <br />
+                <br />
             </Card>
+
         );
     }
 }

@@ -24,7 +24,7 @@ class AdminHome extends Component {
        <FestivalsList 
             id={this.props.user.id}
        />
-        <p>Your ID is: {this.props.user.id}</p>
+        {/* <p>Your ID is: {this.props.user.id}</p> */}
         <LogOutButton className="log-in" />
       </div>
     );

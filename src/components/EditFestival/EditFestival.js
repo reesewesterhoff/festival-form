@@ -69,7 +69,7 @@ class ResponsiveDialog extends React.Component {
               </label>
               <br />
               <label> Date 
-                <input type="text" value={this.state.date} onChange={this.handleChangeFor('date')} />
+                <input type="date" value={this.state.date} onChange={this.handleChangeFor('date')} />
               </label>
               <br />
               <label> Address 
