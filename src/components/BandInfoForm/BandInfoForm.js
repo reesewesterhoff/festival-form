@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditBandInfo from '../EditBandInfo/EditBandInfo';
+import UppyModal from '../UppyModal/UppyModal';
 
 class BandInfoForm extends Component {
 
@@ -36,14 +37,14 @@ class BandInfoForm extends Component {
 
     };
 
-    handleUploadInput = ( uploadURL ) => {
-        console.log( uploadURL );
-        this.setState( {
-            newInfoUpload: {
-                ...this.state.newInfoUpload,
-                path: uploadURL,
-            }
-        } )
+    handleUploadInputFor = (property) => {
+        return (uploadURL) => {
+            console.log(uploadURL);
+            this.setState({
+                ...this.state,
+                [property]: uploadURL,
+            })
+        }
     }
 
     componentDidMount() {
@@ -69,19 +70,23 @@ class BandInfoForm extends Component {
                             </label>
                             <br />
                             <label> Tech Rider
-                        <textarea type="text" value={this.state.tech_rider} onChange={this.handleChangeFor('tech_rider')} />
+                        <input type="text" value={this.state.tech_rider} onChange={this.handleChangeFor('tech_rider')} />
+                                <UppyModal handleUploadInput={this.handleUploadInputFor('tech_rider')} />
                             </label>
                             <br />
                             <label> Hospitality Rider
-                        <textarea type="text" value={this.state.band_rider} onChange={this.handleChangeFor('band_rider')} />
+                        <input type="text" value={this.state.band_rider} onChange={this.handleChangeFor('band_rider')} />
+                                <UppyModal handleUploadInput={this.handleUploadInputFor('band_rider')} />
                             </label>
                             <br />
                             <label> Stage Plot
-                        <textarea type="text" value={this.state.stage_plot} onChange={this.handleChangeFor('stage_plot')} />
+                        <input type="text" value={this.state.stage_plot} onChange={this.handleChangeFor('stage_plot')} />
+                                <UppyModal handleUploadInput={this.handleUploadInputFor('stage_plot')} />
                             </label>
                             <br />
                             <label> Input List
-                        <textarea type="text" value={this.state.input_list} onChange={this.handleChangeFor('input_list')} />
+                        <input type="text" value={this.state.input_list} onChange={this.handleChangeFor('input_list')} />
+                                <UppyModal handleUploadInput={this.handleUploadInputFor('input_list')} />
                             </label>
                             <br />
                             <input type="submit" value="Submit" />

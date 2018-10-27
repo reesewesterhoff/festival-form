@@ -37,10 +37,10 @@ class ResponsiveDialog extends React.Component {
     id: this.props.user.id,
   };
 
-  uppy = Uppy( {
-    restrictions: { maxNumberOfFiles: 1 },
-    autoProceed: false // true is cool behaviour, but this shows it off better
-} )
+//   uppy = Uppy( {
+//     restrictions: { maxNumberOfFiles: 1 },
+//     autoProceed: false // true is cool behaviour, but this shows it off better
+// } )
 
   handleChangeFor = property => event => {
     this.setState({
@@ -64,26 +64,26 @@ class ResponsiveDialog extends React.Component {
     this.handleClose();
   }
 
-  handleUploadInputFor = (thing) => {
+  handleUploadInputFor = (property) => {
   return (uploadURL) => {
     console.log(uploadURL);
     this.setState({
         ...this.state,
-        [thing]: uploadURL,
+        [property]: uploadURL,
     })
   }
 }
 
-  componentDidMount() {
-    this.uppy.use(XHRUpload, {
-      endpoint: './fileupload'
-    })
+  // componentDidMount() {
+  //   this.uppy.use(XHRUpload, {
+  //     endpoint: './fileupload'
+  //   })
 
-    this.uppy.on('complete', (result) => {
-      let url = 'images/' + result.successful[0].name;
-      this.handleUploadInputFor(url);
-    })
-  }
+  //   this.uppy.on('complete', (result) => {
+  //     let url = 'images/' + result.successful[0].name;
+  //     this.handleUploadInputFor(url);
+  //   })
+  // }
 
   render() {
 
