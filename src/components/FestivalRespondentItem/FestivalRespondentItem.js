@@ -34,7 +34,7 @@ class FestivalRespondentItem extends Component {
         const { classes } = this.props;
 
         return (
-            <TableRow className={classes.row}>
+            <TableRow className={classes.row} hover>
                 <TableCell className={classes.title}>{respondent.name}</TableCell>
                 <TableCell className={classes.td}>
                     <img src={respondent.tech_rider} width="200" alt="Technical rider" />
