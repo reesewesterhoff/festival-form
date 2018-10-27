@@ -7,7 +7,6 @@ import { DashboardModal } from '@uppy/react';
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
 
 import './style.min.module.css';
 
@@ -61,7 +60,7 @@ class UppyModalWithButton extends Component {
 
     render() {
 
-        const { classes } = this.props;
+        // const { classes } = this.props;
 
         return (
             <React.Fragment>

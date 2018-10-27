@@ -29,11 +29,10 @@ class FestivalsList extends Component {
     }
 
     deleteFestival = (festId) => {
-        console.log('delete clickedd', festId);
         this.props.dispatch({ type: 'DELETE_FESTIVAL', payload: festId });
     }
 
-    
+
     render() {
 
         const {classes} = this.props;

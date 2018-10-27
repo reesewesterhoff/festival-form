@@ -102,7 +102,7 @@ class FestivalDetail extends Component {
                                     </Typography>
                                     <Typography>
                                         <br />
-                                        <img src={fest.image} height="200" />
+                                        <img src={fest.image} height="200" alt="Music festival" />
                                     </Typography>
                                     <br />
                                     <Typography className={classes.pos} color="textSecondary" variant="h5">

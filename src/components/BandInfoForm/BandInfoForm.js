@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditBandInfo from '../EditBandInfo/EditBandInfo';
-import UppyModal from '../UppyModal/UppyModal';
 
 class BandInfoForm extends Component {
 

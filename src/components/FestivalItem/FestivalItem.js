@@ -7,7 +7,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
+import ConfirmDelete from '../ConfirmDelete/ConfirmDelete';
 
 
 const styles = {
@@ -15,6 +15,7 @@ const styles = {
         marginTop: 75,
         minWidth: 275,
         maxWidth: 400,
+        maxHeight: 600,
         textAlign: 'center',
     },
     pos: {
@@ -35,7 +36,7 @@ const styles = {
         margin: 'auto',
     },
     button: {
-        marginLeft: 8,
+        margin: 15,
     },
 };
 
@@ -61,14 +62,13 @@ class FestivalItem extends Component {
                     </Typography>
                     <Typography>
                         <br />
-                        <img src={this.props.festival.image} height="200" />
+                        <img src={this.props.festival.image} height="200" alt="Music festival" />
                     </Typography>
                     <br />
                     <Typography className={classes.pos} color="textSecondary" variant="h5">
                         {moment(this.props.festival.date).format('M-DD-YYYY')}
                         <br />
                         {this.props.festival.address}
-                        <br />
                     </Typography>
                 </CardContent>
                 <CardActions>
@@ -77,29 +77,22 @@ class FestivalItem extends Component {
                             <div className={classes.buttons}>
                                 <Button className={classes.button} size="large" variant="outlined" color="primary" onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button>
                                 <Button className={classes.button} size="large" variant="outlined" onClick={() => this.props.reviewFestival(this.props.festival)}>Review</Button>
-                                <Button className={classes.button} size="large" variant="outlined" color="secondary" onClick={() => this.props.deleteFestival(this.props.festival.id)}>Delete</Button>
+                                {/* <Button className={classes.button} size="large" variant="outlined" color="secondary" onClick={() => this.props.deleteFestival(this.props.festival.id)}>Delete</Button> */}
+                                <br />
+                                <ConfirmDelete  
+                                    deleteFestival={this.props.deleteFestival}
+                                    festival={this.props.festival}
+                                />
                             </div>
                             :
                             <div className={classes.buttons}>
                                 <Button size="large" variant="outlined" color="primary" onClick={() => this.props.respondToFestival(this.props.festival)}>RSVP</Button>
                             </div>
                     }
-                    <br />
                 </CardActions>
-                {/* <CardActions>
-                    {
-                        this.props.id === 1 ?
-                            <div>
-                                <Button onClick={() => this.props.deleteFestival(this.props.festival.id)}><DeleteRoundedIcon className={classes.icon} /></Button>
-                            </div>
-                            :
-                            null
-                    }
-                </CardActions> */}
                 <br />
-                <br />
+                <br />  
             </Card>
-
         );
     }
 }
