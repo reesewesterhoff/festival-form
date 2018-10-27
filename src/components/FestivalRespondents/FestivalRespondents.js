@@ -30,7 +30,7 @@ const styles = {
     card: {
         marginTop: 30,
         margin: 'auto',
-        maxWidth: 400,
+        maxWidth: 1000,
         textAlign: 'center',
         display: 'flex',
         flexDirection: 'row',
@@ -68,6 +68,10 @@ class FestivalRespondents extends Component {
         this.props.dispatch({ type: 'DELETE_RESPONDENT', payload: respondent });
     }
 
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
 
         let fest = this.props.festToRespond;
@@ -88,7 +92,7 @@ class FestivalRespondents extends Component {
                             </Typography>
                             <Typography>
                                 <br />
-                                <img src={fest.image} height="200" />
+                                <img src={fest.image} height="500" />
                             </Typography>
                             <br />
                             <Typography className={classes.pos} color="textSecondary" variant="h5">
