@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditBandInfo from '../EditBandInfo/EditBandInfo';
 import UppyModal from '../UppyModal/UppyModal';
+import { withStyles } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+
+
+const styles = {
+    h2: {
+        textAlign: 'center',
+        color: 'gray',
+        margin: 40,
+      },
+}
 
 class BandInfoForm extends Component {
 
@@ -54,11 +65,14 @@ class BandInfoForm extends Component {
 
 
     render() {
+
+        const { classes } = this.props;
+
         return (
             <div>
                 {this.props.band_info.id ?
                     <>
-                        <h2>Your information is stored! Click the Update Tour Information button to edit.</h2>
+                        <h2 className={classes.h2}>Your information is stored! Click the Update Tour Information button to edit.</h2>
                         <EditBandInfo />
                     </>
                     :
@@ -99,6 +113,10 @@ class BandInfoForm extends Component {
     }
 }
 
+BandInfoForm.propTypes = {
+    classes: PropTypes.object.isRequired,
+  };
+
 const mapStateToProps = state => {
     return {
         user: state.user,
@@ -106,4 +124,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(BandInfoForm);
+export default withStyles(styles)(connect(mapStateToProps)(BandInfoForm));

@@ -8,22 +8,22 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import { connect } from 'react-redux';
-import Uppy from '@uppy/core';
-import XHRUpload from '@uppy/xhr-upload';
 import UppyModal from '../UppyModal/UppyModal';
 import { withStyles } from '@material-ui/core/styles';
 
 
-const {styles} = {
-
-  h2: {
-    textAlign: 'center',
-    color: 'CornflowerBlue',
-  },
+const styles = {
   button: {
-    margin: 'auto',
     width: 200,
-  }
+    height: 60,
+    fontSize: 20,
+    backgroundColor: 'CornflowerBlue',
+    color: 'white',
+  },
+  center: {
+    width: 200,
+    margin: 'auto',
+  },
 }
 
 class ResponsiveDialog extends React.Component {
@@ -37,10 +37,10 @@ class ResponsiveDialog extends React.Component {
     id: this.props.user.id,
   };
 
-//   uppy = Uppy( {
-//     restrictions: { maxNumberOfFiles: 1 },
-//     autoProceed: false // true is cool behaviour, but this shows it off better
-// } )
+  //   uppy = Uppy( {
+  //     restrictions: { maxNumberOfFiles: 1 },
+  //     autoProceed: false // true is cool behaviour, but this shows it off better
+  // } )
 
   handleChangeFor = property => event => {
     this.setState({
@@ -65,14 +65,14 @@ class ResponsiveDialog extends React.Component {
   }
 
   handleUploadInputFor = (property) => {
-  return (uploadURL) => {
-    console.log(uploadURL);
-    this.setState({
+    return (uploadURL) => {
+      console.log(uploadURL);
+      this.setState({
         ...this.state,
         [property]: uploadURL,
-    })
+      })
+    }
   }
-}
 
   // componentDidMount() {
   //   this.uppy.use(XHRUpload, {
@@ -88,12 +88,13 @@ class ResponsiveDialog extends React.Component {
   render() {
 
     const { fullScreen } = this.props;
-    const {classes} = this.props;
+    const { classes } = this.props;
 
     return (
       <div>
-
-        <Button className={classes.button} variant="contained" onClick={this.handleClickOpen}>Edit Tour Information</Button>
+        <div className={classes.center}>
+          <Button className={classes.button} variant="contained" onClick={this.handleClickOpen}>Edit Tour Information</Button>
+        </div>
         <Dialog
           fullScreen={fullScreen}
           open={this.state.open}
@@ -110,22 +111,22 @@ class ResponsiveDialog extends React.Component {
               <label> Tech Rider
                 {/* <input value={this.state.tech_rider} onChange={this.handleChangeFor('tech_rider')} /> */}
                 {/* <textarea type="text" value={this.state.tech_rider} onChange={this.handleChangeFor('tech_rider')} /> */}
-              <UppyModal handleUploadInput={this.handleUploadInputFor('tech_rider')}/>
+                <UppyModal handleUploadInput={this.handleUploadInputFor('tech_rider')} />
               </label>
               <br />
               <label> Band Rider
                 {/* <textarea type="text" value={this.state.band_rider} onChange={this.handleChangeFor('band_rider')} /> */}
-                <UppyModal handleUploadInput={this.handleUploadInputFor('band_rider')}/>
+                <UppyModal handleUploadInput={this.handleUploadInputFor('band_rider')} />
               </label>
               <br />
               <label> Stage Plot
                 {/* <textarea type="text" value={this.state.stage_plot} onChange={this.handleChangeFor('stage_plot')} /> */}
-                <UppyModal handleUploadInput={this.handleUploadInputFor('stage_plot')}/>
+                <UppyModal handleUploadInput={this.handleUploadInputFor('stage_plot')} />
               </label>
               <br />
               <label> Input List
                 {/* <textarea type="text" value={this.state.input_list} onChange={this.handleChangeFor('input_list')} /> */}
-                <UppyModal handleUploadInput={this.handleUploadInputFor('input_list')}/>
+                <UppyModal handleUploadInput={this.handleUploadInputFor('input_list')} />
               </label>
               <br />
             </DialogContentText>
