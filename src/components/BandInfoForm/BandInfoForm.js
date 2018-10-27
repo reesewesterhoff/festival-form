@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 const styles = {
     h2: {
         textAlign: 'center',
-        color: 'gray',
+        color: 'DarkSlateGray',
         margin: 40,
       },
 }
