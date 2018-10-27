@@ -4,7 +4,7 @@ import moment from 'moment';
 class Blink extends Component {
   constructor(props) {
     super(props);
-    this.state = {isShowingText: true};
+    this.state = { isShowingText: true };
 
     // Toggle the state every 30 seconds
     setInterval(() => {
@@ -16,9 +16,9 @@ class Blink extends Component {
 
   render() {
     return (
-        <div className="nav-right nav-link">
-        {moment().format('MMMM Do YYYY, h:mm a')}
-        </div>
+      <div className="nav-right">
+        <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" >{moment().format('MMMM Do YYYY, h:mm a')}</a>
+      </div>
     );
   }
 }

@@ -37,7 +37,9 @@ const UserNav = (props) => (
           </Link>
         </>
       )}
-      <Time />
+      <div>
+        <Time />
+      </div>
     </div>
   </div>
 );
