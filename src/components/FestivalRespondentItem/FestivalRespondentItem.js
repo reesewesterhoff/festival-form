@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import Button from '@material-ui/core/Button';
 import GetApp from '@material-ui/icons/GetApp';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';

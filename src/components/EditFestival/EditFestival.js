@@ -39,7 +39,7 @@ class ResponsiveDialog extends React.Component {
 
   updateState = () => {
     this.props.dispatch({ type: 'UPDATE_FESTIVAL', payload: this.state });
-    this.props.dispatch({type: 'FESTIVAL_RESPONSE', payload: this.props.festToRespond});
+    this.props.dispatch({type: 'FESTIVAL_RESPONSE', payload: this.state});
     this.handleClose();
   }
 
