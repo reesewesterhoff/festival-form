@@ -8,6 +8,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 
+
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
@@ -25,7 +26,9 @@ class AlertDialogSlide extends Component {
     this.setState({ open: false });
   };
 
+
   render() {
+    
     return (
       <div>
         <Button onClick={this.handleClickOpen} size="large" variant="outlined" color="secondary" ><DeleteRoundedIcon /></Button>
@@ -38,18 +41,18 @@ class AlertDialogSlide extends Component {
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle id="alert-dialog-slide-title">
-            {"Delete festival?"}
+            {"Delete respondent?"}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              Delete this festival? This action cannot be undone.
+              Delete this respondent? This action cannot be undone.
             </DialogContentText>
           </DialogContent>
           <DialogActions>
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
-            <Button onClick={() => this.props.deleteFestival(this.props.festival.id)} color="secondary">
+            <Button onClick={() => this.props.deleteRespondent(this.props.respondent)} color="secondary">
               Delete
             </Button>
           </DialogActions>

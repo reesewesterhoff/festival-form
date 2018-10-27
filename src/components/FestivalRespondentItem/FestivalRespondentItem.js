@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
+import ConfirmDeleteRespondent from '../ConfirmDeleteRespondent/ConfirmDeleteRespondent';
 
 const styles = {
     icon: {
@@ -56,7 +57,12 @@ class FestivalRespondentItem extends Component {
                 <TableCell className={classes.td}>{moment(respondent.arrival_time, 'hh:mm:ss').format('h:mm A')}</TableCell>
                 <TableCell className={classes.td}>{respondent.requests}</TableCell>
                 <TableCell className={classes.td}>{respondent.notes}</TableCell>
-                <TableCell><Button variant="outlined" color="secondary" onClick={() => this.props.deleteRespondent(respondent)}>Delete</Button></TableCell>
+                <TableCell>
+                        <ConfirmDeleteRespondent 
+                            deleteRespondent={this.props.deleteRespondent}
+                            respondent={respondent}
+                        />
+                </TableCell>
             </TableRow>
         );
     }

@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
+
 const styles = {
     card: {
         display: 'flex',
@@ -32,13 +33,17 @@ class FestivalsList extends Component {
         this.props.dispatch({ type: 'DELETE_FESTIVAL', payload: festId });
     }
 
+   
+
 
     render() {
 
-        const {classes} = this.props;
+        const { classes } = this.props;
+    
 
         return (
-            <div className={classes.card}>
+            <div>
+                <div className={classes.card}>
                     {this.props.festivals.map(festival => {
                         return <FestivalItem
                             id={this.props.id}
@@ -50,6 +55,7 @@ class FestivalsList extends Component {
                         />
                     }
                     )}
+                </div>
             </div>
         );
     }
