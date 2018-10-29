@@ -1,55 +1,56 @@
 import React from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
+
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
 // It doesn't dispatch any redux actions or display any part of redux state
 // or even care what the redux state is, so it doesn't need 'connect()'
 
-const styles = {
-  footer: {
-    width: '100%',
-    margin: 'auto',
-  },
-  link: {
-    margin: 30,
-    color: 'black',
-  },
-};
+// const styles = {
+//   footer: {
+//     width: '100%',
+//     margin: 'auto',
+//   },
+//   link: {
+//     margin: 30,
+//     color: 'black',
+//   },
+// };
 
 
 
-function Footer(props) {
+function Footer() {
 
-  const { classes } = props;
 
-  return(
-  <>
-    <hr />
-    <footer className={classes.footer}>
-      <Link className={classes.link} to="/home">
-        Home
-      </Link>
-      <Link className={classes.link} to="/info">
-        Info
-      </Link>
-      <Link className={classes.link} to="/about">
-        About
-      </Link>
-      <Link className={classes.link} to="/tourinfo">
-        My Tour Info
-      </Link>
-    </footer>
-    <hr />
-  </>
-);
+  return (
+    <>
+      <footer className="footer">
+        <span className="span" id="span">
+          <Link to="/home">
+            Home
+          </Link>
+        </span>
+        <span className="span">
+          <Link to="/info">
+            Info
+          </Link>
+        </span>
+        <span className="span"> 
+          <Link to="/about">
+            About
+          </Link>
+        </span>
+        <span className="span">
+          <Link to="/tourinfo">
+            My Tour Info
+          </Link>
+        </span>
+      </footer>
+    </>
+  );
 }
 
-Footer.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
-export default withStyles(styles)(Footer);
+export default Footer;
