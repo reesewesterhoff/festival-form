@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import './CreateFestForm.css';
 
 class CreateFestForm extends Component {
 
@@ -13,8 +16,8 @@ class CreateFestForm extends Component {
 
     handleChangeFor = propertyName => event => {
         this.setState({
-                ...this.state,
-                [propertyName]: event.target.value
+            ...this.state,
+            [propertyName]: event.target.value
         });
     };
 
@@ -23,35 +26,57 @@ class CreateFestForm extends Component {
         console.log(this.state);
         this.props.dispatch({ type: 'CREATE_FESTIVAL', payload: this.state });
         this.setState({
-                name: '',
-                date: '',
-                address: '',
-                image: '',   
-        });  
+            name: '',
+            date: '',
+            address: '',
+            image: '',
+        });
     };
 
     render() {
-        return(
-            <div>
-                <h1>Create New Festival</h1>
+        return (
+            <div className="inputDiv">
                 <form onSubmit={this.handleSubmit}>
-                <label> Festival Name
-                        <input type="text" value={this.state.name} onChange={this.handleChangeFor('name')} />
-                    </label>
+                    <h1>Create New Festival</h1>
+                    <p className="tagline">Please enter some information about this festival.</p>
                     <br />
-                    <label> Date
-                        <input type="date" value={this.state.date} onChange={this.handleChangeFor('date')} />
-                    </label>
+                    <TextField
+                        type="text"
+                        label="Festival Name"
+                        variant="outlined"
+                        value={this.state.name}
+                        onChange={this.handleChangeFor('name')}
+                    />
                     <br />
-                    <label> Address
-                        <input type="text" value={this.state.address} onChange={this.handleChangeFor('address')} />
-                    </label>
                     <br />
-                    <label> Photo Url
-                        <input type="text" value={this.state.image} onChange={this.handleChangeFor('image')} />
-                    </label>
+                    <TextField
+                        type="date"
+                        variant="outlined"
+                        value={this.state.date}
+                        onChange={this.handleChangeFor('date')}
+                    />
                     <br />
-                    <input type="submit" value="Create Festival" />
+                    <br />
+                    <TextField
+                        type="text"
+                        label="Address"
+                        variant="outlined"
+                        value={this.state.address}
+                        onChange={this.handleChangeFor('address')}
+                    />
+                    <br />
+                    <br />
+                    <TextField
+                        type="text"
+                        label="Photo Url"
+                        variant="outlined"
+                        value={this.state.image}
+                        onChange={this.handleChangeFor('image')}
+                    />
+                    <br />
+                    <br />
+                    <br />
+                    <Button type="submit" value="Create Festival" variant="outlined" color="primary">Create Festival</Button>
                 </form>
             </div>
         );

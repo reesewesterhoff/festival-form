@@ -17,7 +17,7 @@ class Blink extends Component {
   render() {
     return (
       <div className="nav-right">
-        <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" >{moment().format('MMMM Do YYYY, h:mm a')}</a>
+        <a target="_blank" href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" rel="noopener noreferrer">{moment().format('MMMM Do YYYY, h:mm a')}</a>
       </div>
     );
   }

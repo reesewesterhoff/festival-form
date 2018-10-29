@@ -9,12 +9,13 @@ body {
 }
 
 form {
-    background-color: #dbd5d5;
+    background-image: linear-gradient( rgb(199, 255, 252), rgb(255, 255, 255));
     width: 30%;
-    height: 250px;
-    margin: 20px auto;
+    min-height: 250px;
+    margin: 50px auto;
     padding: 25px;
-    border-radius: 2px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 5px grey;
 }
 
 input {
@@ -46,4 +47,8 @@ input {
     outline:0;
     border-bottom:1px solid #444; 
     cursor: pointer;
+}
+
+#welcome {
+    margin: 20px;
 }

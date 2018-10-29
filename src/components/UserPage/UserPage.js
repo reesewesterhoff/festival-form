@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import FestivalsList from '../FestivalsList/FestivalsList';
 
 class UserPage extends Component {
@@ -29,8 +28,11 @@ class UserPage extends Component {
        <FestivalsList 
           id={this.props.user.id}
        />
-        <p>Your ID is: {this.props.user.id}</p>
-        <LogOutButton className="log-in" />
+       <br />
+       <br />
+       <br />
+        {/* <p>Your ID is: {this.props.user.id}</p>
+        <LogOutButton className="log-in" /> */}
       </div>
     );
   }
