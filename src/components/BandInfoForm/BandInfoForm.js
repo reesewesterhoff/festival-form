@@ -7,6 +7,8 @@ import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 
 const styles = {
@@ -114,9 +116,9 @@ class BandInfoForm extends Component {
                                     <Typography variant="h3">
                                         Stage Plot
                                         </Typography>
-                                        <hr />
-                                        <br />
-                                        <img src={this.props.band_info.stage_plot} width="400" alt="Music festival" />
+                                    <hr />
+                                    <br />
+                                    <img src={this.props.band_info.stage_plot} width="400" alt="Music festival" />
                                 </CardContent>
                             </Card>
                             <Card className={classes.card}>
@@ -124,9 +126,9 @@ class BandInfoForm extends Component {
                                     <Typography variant="h3">
                                         Input List
                                         </Typography>
-                                        <hr />
-                                        <br />
-                                        <img src={this.props.band_info.input_list} width="400" alt="Music festival" />
+                                    <hr />
+                                    <br />
+                                    <img src={this.props.band_info.input_list} width="400" alt="Music festival" />
                                 </CardContent>
                             </Card>
                             <br />
@@ -136,33 +138,70 @@ class BandInfoForm extends Component {
                     </>
                     :
                     <>
-                        <h2>Please enter current band information.</h2>
+
                         <form onSubmit={this.handleSubmit}>
-                            <label> Band Name
-                        <input type="text" value={this.state.name} onChange={this.handleChangeFor('name')} />
-                            </label>
-                            <br />
-                            <label> Tech Rider
-                        <input type="text" value={this.state.tech_rider} onChange={this.handleChangeFor('tech_rider')} />
+                            <div className="inputDiv">
+                                <h2>Please upload current band information.</h2>
+                                <br />
+                                <TextField
+                                    type="text"
+                                    label="Band Name"
+                                    variant="outlined"
+                                    value={this.state.name}
+                                    onChange={this.handleChangeFor('name')}
+                                />
+                                <br />
+                                <br />
+                                <TextField
+                                    type="text"
+                                    label="Tech Rider"
+                                    variant="outlined"
+                                    value={this.state.tech_rider}
+                                    onChange={this.handleChangeFor('tech_rider')}
+                                />
                                 <UppyModal handleUploadInput={this.handleUploadInputFor('tech_rider')} />
-                            </label>
-                            <br />
-                            <label> Hospitality Rider
-                        <input type="text" value={this.state.band_rider} onChange={this.handleChangeFor('band_rider')} />
+                                <br />
+                                <br />
+                                <TextField
+                                    type="text"
+                                    label="Hospitality Rider"
+                                    variant="outlined"
+                                    value={this.state.band_rider}
+                                    onChange={this.handleChangeFor('band_rider')}
+                                />
                                 <UppyModal handleUploadInput={this.handleUploadInputFor('band_rider')} />
-                            </label>
-                            <br />
-                            <label> Stage Plot
-                        <input type="text" value={this.state.stage_plot} onChange={this.handleChangeFor('stage_plot')} />
+                                <br />
+                                <br />
+                                <TextField
+                                    type="text"
+                                    label="Stage Plot"
+                                    variant="outlined"
+                                    value={this.state.stage_plot}
+                                    onChange={this.handleChangeFor('stage_plot')}
+                                />
                                 <UppyModal handleUploadInput={this.handleUploadInputFor('stage_plot')} />
-                            </label>
-                            <br />
-                            <label> Input List
-                        <input type="text" value={this.state.input_list} onChange={this.handleChangeFor('input_list')} />
+                                <br />
+                                <br />
+                                <TextField
+                                    type="text"
+                                    label="Input List"
+                                    variant="outlined"
+                                    value={this.state.input_list}
+                                    onChange={this.handleChangeFor('input_list')}
+                                />
                                 <UppyModal handleUploadInput={this.handleUploadInputFor('input_list')} />
-                            </label>
-                            <br />
-                            <input type="submit" value="Submit" />
+                                <br />
+                                <br />
+                                <Button
+                                    type="submit"
+                                    value="Submit"
+                                    variant="outlined"
+                                    size="large"
+                                    color="primary"
+                                >
+                                    Submit
+                                </Button>
+                            </div>
                         </form>
                         <hr />
                         <br />
