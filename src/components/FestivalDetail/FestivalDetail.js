@@ -89,13 +89,60 @@ class FestivalDetail extends Component {
 
         return (
             <div>
-                <div className="containerside">
+                <div>
                     <h1 className="tagline">Festival RSVP</h1>
-                    <p className="tagline">Please verify that you are responding to the correct festival then scroll down to enter your information.</p>
+                    <p className="tagline">Please verify that you are responding to the correct festival than enter your information.</p>
                     <p className="tagline">Upon clicking RSVP all of your current tour information along with your arrival time, notes, and requests will be</p>
                     <p className="tagline">made visible to the festival promoter.</p>
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="inputDiv">
+                            <br />
+                            <p className="tagline">Please enter your arrival time and any notes or requests you might have for the festival promoter.</p>
+                            <br />
+                            <label>Arrival Time
+                            <TextField
+                                    type="time"
+                                    variant="outlined"
+                                    value={this.state.response.arrival_time}
+                                    onChange={this.handleChangeFor('arrival_time')}
+                                />
+                            </label>
+                            <br />
+                            <br />
+                            <TextField
+                                type="text"
+                                variant="outlined"
+                                label="Notes"
+                                value={this.state.response.notes}
+                                onChange={this.handleChangeFor('notes')}
+                            />
+                            <br />
+                            <br />
+                            <TextField
+                                type="text"
+                                variant="outlined"
+                                label="Requests"
+                                value={this.state.response.requests}
+                                onChange={this.handleChangeFor('requests')}
+                            />
+                            <br />
+                            <br />
+                            <Button
+                                type="submit"
+                                value="Submit"
+                                size="medium"
+                                color="primary"
+                                variant="outlined"
+                            >
+                                RSVP <DoneAllIcon />
+                            </Button>
+                        </div>
+                    </form>
+                    <br />
+                </div>
+                <div>
                     {fest.id ?
-                        <div className="side">
+                        <div>
                             <Card className={classes.card}>
                                 <CardContent>
                                     <Typography variant="h3" gutterBottom>
@@ -121,53 +168,6 @@ class FestivalDetail extends Component {
                         </div>
                         : null}
                     <br />
-                    <div className="side2">
-                        <form onSubmit={this.handleSubmit}>
-                        <div className="inputDiv">
-                        <br />
-                        <p className="tagline">Please enter your arrival time and any notes or requests you might have for the festival promoter.</p>
-                        <br />
-                            <label>Arrival Time
-                            <TextField
-                                type="time"
-                                variant="outlined"
-                                value={this.state.response.arrival_time}
-                                onChange={this.handleChangeFor('arrival_time')}
-                            />
-                            </label>
-                            <br />
-                            <br />
-                            <TextField
-                                type="text"
-                                variant="outlined"
-                                label="Notes"
-                                value={this.state.response.notes}
-                                onChange={this.handleChangeFor('notes')}
-                            />
-                            <br />
-                            <br />
-                            <TextField
-                                type="text"
-                                variant="outlined"
-                                label="Requests"
-                                value={this.state.response.requests}
-                                onChange={this.handleChangeFor('requests')}
-                            />
-                            <br />
-                            <br />
-                            <Button 
-                                type="submit" 
-                                value="Submit" 
-                                size="medium" 
-                                color="primary" 
-                                variant="outlined"
-                            >
-                            RSVP <DoneAllIcon />
-                            </Button>
-                            </div>
-                        </form>
-                        <br />
-                    </div>
                 </div>
             </div>
         );
