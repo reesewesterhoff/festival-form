@@ -1,12 +1,15 @@
+// server/routes/fileUpload.router.js
+
+// requires
+const fs = require( 'fs' );
 const express = require( 'express' );
+// create router
 const router = express.Router();
 
-// file stream require
-const fs = require( 'fs' );
-
-// Set where to write!
+// Set where to write
 const whereToWrite = '/../../public/images/';
 
+// POST request
 router.post( '/', function ( req, res ) {
     var fstream;
     req.pipe( req.busboy );
@@ -20,4 +23,5 @@ router.post( '/', function ( req, res ) {
     } );
 } );
 
+// exports
 module.exports = router;
