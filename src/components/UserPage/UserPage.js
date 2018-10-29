@@ -19,11 +19,11 @@ class UserPage extends Component {
     return (
       <div>
         <h1 id="welcome">
-          Welcome, { this.props.user.first_name }!
+          Welcome, { this.props.user.first_name }
         </h1>
         <br />
         <hr />
-        <h2 style={{textAlign: 'center'}}>All Festivals</h2>
+        <h2 style={{textAlign: 'center'}} className="tagline">All Festivals</h2>
         <hr />
        <FestivalsList 
           id={this.props.user.id}

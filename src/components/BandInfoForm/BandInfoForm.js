@@ -17,13 +17,11 @@ const styles = {
     },
     card: {
         marginTop: 30,
-        margin: 'auto',
-        maxWidth: 400,
+        margin: 10,
+        maxWidth: 450,
+        height: 500,
         textAlign: 'center',
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-evenly',
+        display: 'inline-block',
     },
 }
 
@@ -90,47 +88,50 @@ class BandInfoForm extends Component {
                         <br />
                         <br />
                         <h2 className={classes.h2}>Current Tour Information</h2>
-                        <div>
+                        <div className="cardDiv">
                             <Card className={classes.card}>
                                 <CardContent>
                                     <Typography variant="h3">
                                         Tech Rider
                                     </Typography>
-                                        <hr />
-                                        <br />
-                                        <img src={this.props.band_info.tech_rider} width="400" alt="Music festival" />
+                                    <hr />
+                                    <br />
+                                    <img src={this.props.band_info.tech_rider} width="400" alt="Music festival" />
                                 </CardContent>
                             </Card>
                             <Card className={classes.card}>
                                 <CardContent>
-                                    <Typography>
-                                        <h3>Hospitality Rider</h3>
-                                        <hr />
-                                        <br />
-                                        <img src={this.props.band_info.band_rider} width="400" alt="Music festival" />
-                                    </Typography>
+                                    <Typography variant="h3">
+                                        Hospitality Rider
+                                        </Typography>
+                                    <hr />
+                                    <br />
+                                    <img src={this.props.band_info.band_rider} width="400" alt="Music festival" />
                                 </CardContent>
                             </Card>
                             <Card className={classes.card}>
                                 <CardContent>
-                                    <Typography>
-                                        <h3>Stage Plot</h3>
+                                    <Typography variant="h3">
+                                        Stage Plot
+                                        </Typography>
                                         <hr />
                                         <br />
                                         <img src={this.props.band_info.stage_plot} width="400" alt="Music festival" />
-                                    </Typography>
                                 </CardContent>
                             </Card>
                             <Card className={classes.card}>
                                 <CardContent>
-                                    <Typography>
-                                        <h3>Input List</h3>
+                                    <Typography variant="h3">
+                                        Input List
+                                        </Typography>
                                         <hr />
                                         <br />
                                         <img src={this.props.band_info.input_list} width="400" alt="Music festival" />
-                                    </Typography>
                                 </CardContent>
                             </Card>
+                            <br />
+                            <br />
+                            <br />
                         </div>
                     </>
                     :
@@ -164,6 +165,9 @@ class BandInfoForm extends Component {
                             <input type="submit" value="Submit" />
                         </form>
                         <hr />
+                        <br />
+                        <br />
+                        <br />
                     </>
                 }
             </div>

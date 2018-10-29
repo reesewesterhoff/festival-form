@@ -6,15 +6,17 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import './FestivalDetail.css';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
 
 
 const styles = {
     card: {
         marginTop: 30,
-        marginLeft: 100,
+        margin: 'auto',
         minWidth: 275,
-        maxWidth: 400,
+        maxWidth: 700,
         textAlign: 'center',
         display: 'flex',
         flexDirection: 'row',
@@ -53,7 +55,7 @@ class FestivalDetail extends Component {
     }
 
     componentDidMount() {
-
+        window.scrollTo(0, 0);
     }
 
 
@@ -88,7 +90,10 @@ class FestivalDetail extends Component {
         return (
             <div>
                 <div className="containerside">
-                    <h1 className={classes.h1}>Festival RSVP</h1>
+                    <h1 className="tagline">Festival RSVP</h1>
+                    <p className="tagline">Please verify that you are responding to the correct festival then scroll down to enter your information.</p>
+                    <p className="tagline">Upon clicking RSVP all of your current tour information along with your arrival time, notes, and requests will be</p>
+                    <p className="tagline">made visible to the festival promoter.</p>
                     {fest.id ?
                         <div className="side">
                             <Card className={classes.card}>
@@ -102,7 +107,7 @@ class FestivalDetail extends Component {
                                     </Typography>
                                     <Typography>
                                         <br />
-                                        <img src={fest.image} height="200" alt="Music festival" />
+                                        <img src={fest.image} height="300" alt="Music festival" />
                                     </Typography>
                                     <br />
                                     <Typography className={classes.pos} color="textSecondary" variant="h5">
@@ -118,19 +123,50 @@ class FestivalDetail extends Component {
                     <br />
                     <div className="side2">
                         <form onSubmit={this.handleSubmit}>
-                            <label> Arrival Time
-                        <input type="time" value={this.state.response.arrival_time} onChange={this.handleChangeFor('arrival_time')} />
+                        <div className="inputDiv">
+                        <br />
+                        <p className="tagline">Please enter your arrival time and any notes or requests you might have for the festival promoter.</p>
+                        <br />
+                            <label>Arrival Time
+                            <TextField
+                                type="time"
+                                variant="outlined"
+                                value={this.state.response.arrival_time}
+                                onChange={this.handleChangeFor('arrival_time')}
+                            />
                             </label>
                             <br />
-                            <label> Notes
-                        <input type="textArea" value={this.state.response.notes} onChange={this.handleChangeFor('notes')} />
-                            </label>
                             <br />
-                            <label> Requests
-                        <input type="textArea" value={this.state.response.requests} onChange={this.handleChangeFor('requests')} />
-                            </label>
-                            <input type="submit" value="Submit" />
+                            <TextField
+                                type="text"
+                                variant="outlined"
+                                label="Notes"
+                                value={this.state.response.notes}
+                                onChange={this.handleChangeFor('notes')}
+                            />
+                            <br />
+                            <br />
+                            <TextField
+                                type="text"
+                                variant="outlined"
+                                label="Requests"
+                                value={this.state.response.requests}
+                                onChange={this.handleChangeFor('requests')}
+                            />
+                            <br />
+                            <br />
+                            <Button 
+                                type="submit" 
+                                value="Submit" 
+                                size="medium" 
+                                color="primary" 
+                                variant="outlined"
+                            >
+                            RSVP <DoneAllIcon />
+                            </Button>
+                            </div>
                         </form>
+                        <br />
                     </div>
                 </div>
             </div>

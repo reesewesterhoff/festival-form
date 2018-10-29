@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import TextField from '@material-ui/core/TextField';
 
 class RegisterPage extends Component {
   state = {
@@ -48,61 +49,62 @@ class RegisterPage extends Component {
         )}
         <form onSubmit={this.registerUser}>
           <h1>Register User</h1>
+          <br />
           <div>
-            <label htmlFor="username">
-              Username:
-              <input
+              <TextField
                 type="text"
+                label="Username"
+                variant="outlined"
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
-            </label>
           </div>
+          <br />
           <div>
-            <label htmlFor="first_name">
-              First Name:
-              <input
+              <TextField
                 type="text"
+                label="First Name"
+                variant="outlined"
                 name="first_name"
                 value={this.state.first_name}
                 onChange={this.handleInputChangeFor('first_name')}
               />
-            </label>
           </div>
+          <br />
           <div>
-            <label htmlFor="last_name">
-              Last Name:
-              <input
+              <TextField
                 type="text"
+                label="Last Name"
+                variant="outlined"
                 name="last_name"
                 value={this.state.last_name}
                 onChange={this.handleInputChangeFor('last_name')}
               />
-            </label>
           </div>
+          <br />
           <div>
-            <label htmlFor="email">
-              Email:
-              <input
+              <TextField
                 type="text"
+                label="Email"
+                variant="outlined"
                 name="email"
                 value={this.state.email}
                 onChange={this.handleInputChangeFor('email')}
               />
-            </label>
           </div>
+          <br />
           <div>
-            <label htmlFor="password">
-              Password:
-              <input
+              <TextField
                 type="password"
+                label="Password"
+                variant="outlined"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
           </div>
+          <br />
           <div>
             <input
               className="register"

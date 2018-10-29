@@ -47,6 +47,7 @@ const styles = {
     },
     h1: {
         textAlign: 'center',
+        color: 'DarkSlateGray',
     },
     root: {
         width: '100%',
@@ -157,7 +158,10 @@ class FestivalRespondents extends Component {
                         </Table>
                     </Paper>
                     :
-                    'No Respondents Yet!'}
+                    <h2 className={classes.h1}>No Respondents Yet</h2>}
+                    <br />
+                    <br />
+                    <br />
             </div>
         );
     }

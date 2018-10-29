@@ -10,6 +10,7 @@ class AdminHome extends Component {
 
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ALL_FESTIVALS'});
+    this.props.dispatch({type: 'FETCH_BAND_INFO', payload: this.props.user.id});
   }
 
 
@@ -17,11 +18,11 @@ class AdminHome extends Component {
     return (
       <div>
         <h1 id="welcome">
-          Welcome, { this.props.user.first_name }!
+          Welcome, { this.props.user.first_name }
         </h1>
         <br />
         <hr />
-        <h2 style={{textAlign: 'center'}}>Active Festivals</h2>
+        <h2 style={{textAlign: 'center'}} className="tagline">Active Festivals</h2>
         <hr />
        <FestivalsList 
             id={this.props.user.id}

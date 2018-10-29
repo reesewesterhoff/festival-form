@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import TextField from '@material-ui/core/TextField';
 
 class LoginPage extends Component {
   state = {
@@ -43,27 +44,27 @@ class LoginPage extends Component {
         <form onSubmit={this.login}>
           <h1>Login</h1>
           <div>
-            <label htmlFor="username">
-              Username:
-              <input
+              <TextField
                 type="text"
+                variant="outlined"
+                label="Username"
                 name="username"
                 value={this.state.username}
                 onChange={this.handleInputChangeFor('username')}
               />
-            </label>
           </div>
+          <br />
           <div>
-            <label htmlFor="password">
-              Password:
-              <input
+              <TextField
                 type="password"
+                variant="outlined"
+                label="Password"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleInputChangeFor('password')}
               />
-            </label>
           </div>
+          <br />
           <div>
             <input
               className="log-in"
