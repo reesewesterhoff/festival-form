@@ -4,6 +4,9 @@ import EditBandInfo from '../EditBandInfo/EditBandInfo';
 import UppyModal from '../UppyModal/UppyModal';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 
 
 const styles = {
@@ -11,7 +14,17 @@ const styles = {
         textAlign: 'center',
         color: 'DarkSlateGray',
         margin: 40,
-      },
+    },
+    card: {
+        marginTop: 30,
+        margin: 'auto',
+        maxWidth: 400,
+        textAlign: 'center',
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-evenly',
+    },
 }
 
 class BandInfoForm extends Component {
@@ -74,6 +87,51 @@ class BandInfoForm extends Component {
                     <>
                         <h2 className={classes.h2}>Your information is stored! Click the Update Tour Information button to edit.</h2>
                         <EditBandInfo />
+                        <br />
+                        <br />
+                        <h2 className={classes.h2}>Current Tour Information</h2>
+                        <div>
+                            <Card className={classes.card}>
+                                <CardContent>
+                                    <Typography variant="h3">
+                                        Tech Rider
+                                    </Typography>
+                                        <hr />
+                                        <br />
+                                        <img src={this.props.band_info.tech_rider} width="400" alt="Music festival" />
+                                </CardContent>
+                            </Card>
+                            <Card className={classes.card}>
+                                <CardContent>
+                                    <Typography>
+                                        <h3>Hospitality Rider</h3>
+                                        <hr />
+                                        <br />
+                                        <img src={this.props.band_info.band_rider} width="400" alt="Music festival" />
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                            <Card className={classes.card}>
+                                <CardContent>
+                                    <Typography>
+                                        <h3>Stage Plot</h3>
+                                        <hr />
+                                        <br />
+                                        <img src={this.props.band_info.stage_plot} width="400" alt="Music festival" />
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                            <Card className={classes.card}>
+                                <CardContent>
+                                    <Typography>
+                                        <h3>Input List</h3>
+                                        <hr />
+                                        <br />
+                                        <img src={this.props.band_info.input_list} width="400" alt="Music festival" />
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </div>
                     </>
                     :
                     <>
@@ -115,7 +173,7 @@ class BandInfoForm extends Component {
 
 BandInfoForm.propTypes = {
     classes: PropTypes.object.isRequired,
-  };
+};
 
 const mapStateToProps = state => {
     return {
