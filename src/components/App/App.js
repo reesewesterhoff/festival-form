@@ -76,7 +76,7 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/adminhome"
-              component={AdminHome}
+              component={UserPage}
             />
             <ProtectedRoute
               exact

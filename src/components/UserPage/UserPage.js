@@ -8,10 +8,9 @@ class UserPage extends Component {
   }
 
   componentDidMount() {
-    this.props.dispatch({ type: 'FETCH_ALL_FESTIVALS'});
-    this.props.dispatch({type: 'FETCH_BAND_INFO', payload: this.props.user.id});
-    console.log('user id userpage', this.props.user.id);
-    
+    this.props.dispatch({ type: 'FETCH_ALL_FESTIVALS' });
+    this.props.dispatch({ type: 'FETCH_BAND_INFO', payload: this.props.user.id });
+
   }
 
 
@@ -19,20 +18,23 @@ class UserPage extends Component {
     return (
       <div>
         <h1 id="welcome">
-          Welcome, { this.props.user.first_name }
+          Welcome, {this.props.user.first_name}
         </h1>
         <br />
         <hr />
-        <h2 style={{textAlign: 'center'}} className="tagline">All Festivals</h2>
+        {this.props.user.id === 1 
+          ?
+          <h2 style={{ textAlign: 'center' }} className="tagline">Active Festivals</h2>
+          :
+          <h2 style={{ textAlign: 'center' }} className="tagline">All Festivals</h2>
+        }
         <hr />
-       <FestivalsList 
+        <FestivalsList
           id={this.props.user.id}
-       />
-       <br />
-       <br />
-       <br />
-        {/* <p>Your ID is: {this.props.user.id}</p>
-        <LogOutButton className="log-in" /> */}
+        />
+        <br />
+        <br />
+        <br />
       </div>
     );
   }
