@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import EditBandInfo from '../EditBandInfo/EditBandInfo';
-import UppyModal from '../UppyModal/UppyModal';
+import UppyModalWithButton from '../UppyModalWithButton/UppyModalWithButton';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
@@ -159,7 +159,7 @@ class BandInfoForm extends Component {
                                     value={this.state.tech_rider}
                                     onChange={this.handleChangeFor('tech_rider')}
                                 />
-                                <UppyModal handleUploadInput={this.handleUploadInputFor('tech_rider')} />
+                                <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('tech_rider')} />
                                 <br />
                                 <br />
                                 <TextField
@@ -169,7 +169,7 @@ class BandInfoForm extends Component {
                                     value={this.state.band_rider}
                                     onChange={this.handleChangeFor('band_rider')}
                                 />
-                                <UppyModal handleUploadInput={this.handleUploadInputFor('band_rider')} />
+                                <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('band_rider')} />
                                 <br />
                                 <br />
                                 <TextField
@@ -179,7 +179,7 @@ class BandInfoForm extends Component {
                                     value={this.state.stage_plot}
                                     onChange={this.handleChangeFor('stage_plot')}
                                 />
-                                <UppyModal handleUploadInput={this.handleUploadInputFor('stage_plot')} />
+                                <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('stage_plot')} />
                                 <br />
                                 <br />
                                 <TextField
@@ -189,7 +189,7 @@ class BandInfoForm extends Component {
                                     value={this.state.input_list}
                                     onChange={this.handleChangeFor('input_list')}
                                 />
-                                <UppyModal handleUploadInput={this.handleUploadInputFor('input_list')} />
+                                <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('input_list')} />
                                 <br />
                                 <br />
                                 <Button

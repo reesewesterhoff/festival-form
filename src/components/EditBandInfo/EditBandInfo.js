@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import withMobileDialog from '@material-ui/core/withMobileDialog';
 import { connect } from 'react-redux';
-import UppyModal from '../UppyModal/UppyModal';
+import UppyModalWithButton from '../UppyModalWithButton/UppyModalWithButton';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Typography } from '@material-ui/core';
@@ -47,7 +46,7 @@ const styles = theme => ({
   },
 });
 
-class ResponsiveDialog extends React.Component {
+class EditBandInfo extends React.Component {
 
   state = {
     open: false,
@@ -114,64 +113,62 @@ class ResponsiveDialog extends React.Component {
               Enter in the current tour information. Clicking update will store all new information.
             </Typography>
             <br />
-            {/* <Typography> */}
-              <div>
-                <TextField
-                  type="text"
-                  label="Band Name"
-                  value={this.state.name}
-                  onChange={this.handleChangeFor('name')}
-                />
-              </div>
-              <br />
-              <div>
-                <TextField
-                  type="text"
-                  label="Tech Rider"
-                  value={this.state.tech_rider}
-                  readOnly
-                  disabled
-                />
-                <UppyModal handleUploadInput={this.handleUploadInputFor('tech_rider')} />
-              </div>
-              <br />
-              <div>
-                <TextField
-                  type="text"
-                  label="Hospitality Rider"
-                  value={this.state.band_rider}
-                  readOnly
-                  disabled
-                />
-                <UppyModal handleUploadInput={this.handleUploadInputFor('band_rider')} />
-              </div>
-              <br />
-              <div>
-                <TextField
-                  type="text"
-                  label="Stage Plot"
-                  value={this.state.stage_plot}
-                  readOnly
-                  disabled
-                />
-                <UppyModal handleUploadInput={this.handleUploadInputFor('stage_plot')} />
-              </div>
-              <br />
-              <div>
-                <TextField
-                  type="text"
-                  label="Input List"
-                  value={this.state.input_list}
-                  readOnly
-                  disabled
-                />
-                <UppyModal handleUploadInput={this.handleUploadInputFor('input_list')} />
-              </div>
-              <br />
-            {/* </Typography> */}
-            <Button 
+            <div>
+              <TextField
+                type="text"
+                label="Band Name"
+                value={this.state.name}
+                onChange={this.handleChangeFor('name')}
+              />
+            </div>
+            <br />
+            <div>
+              <TextField
+                type="text"
+                label="Tech Rider"
+                value={this.state.tech_rider}
+                readOnly
+                disabled
+              />
+              <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('tech_rider')} />
+            </div>
+            <br />
+            <div>
+              <TextField
+                type="text"
+                label="Hospitality Rider"
+                value={this.state.band_rider}
+                readOnly
+                disabled
+              />
+              <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('band_rider')} />
+            </div>
+            <br />
+            <div>
+              <TextField
+                type="text"
+                label="Stage Plot"
+                value={this.state.stage_plot}
+                readOnly
+                disabled
+              />
+              <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('stage_plot')} />
+            </div>
+            <br />
+            <div>
+              <TextField
+                type="text"
+                label="Input List"
+                value={this.state.input_list}
+                readOnly
+                disabled
+              />
+              <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('input_list')} />
+            </div>
+            <br />
+            <Button
               className={classes.actionButtons}
-              onClick={this.handleClose} 
+              onClick={this.handleClose}
               color="secondary"
               size="large"
               variant="outlined"
@@ -179,9 +176,9 @@ class ResponsiveDialog extends React.Component {
               Cancel
             </Button>
             <Button
-              className={classes.actionButtons} 
-              onClick={this.updateState} 
-              color="primary" 
+              className={classes.actionButtons}
+              onClick={this.updateState}
+              color="primary"
               size="large"
               variant="outlined"
               autoFocus
@@ -195,7 +192,7 @@ class ResponsiveDialog extends React.Component {
   }
 }
 
-ResponsiveDialog.propTypes = {
+EditBandInfo.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
@@ -209,4 +206,4 @@ const mapStateToProps = state => {
 }
 
 
-export default withStyles(styles)(connect(mapStateToProps)(withMobileDialog()(ResponsiveDialog)));
+export default withStyles(styles)(connect(mapStateToProps)(EditBandInfo));

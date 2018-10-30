@@ -1,64 +1,68 @@
+// import react
 import React, { Component } from 'react';
 
-// Uppy stuff
+// Uppy imports
 import Uppy from '@uppy/core';
 import XHRUpload from '@uppy/xhr-upload';
 import { DashboardModal } from '@uppy/react';
-import './uppy.min.css'; // css not working
+import './uppy.min.css';
 
-//
+// material-ui imports
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
-
-
-// This could also use Tus instead of xhr --
-// The server would have to change to use Tus as well.
-
+// styles
 const styles = {
 
     button: {
         margin: 10,
     },
-
 };
+
 
 class UppyModalWithButton extends Component {
 
+    // define state
     state = {
         modalOpen: false
     }
 
-    uppy = Uppy( {
+    // create instance of uppy
+    uppy = Uppy({
         restrictions: { maxNumberOfFiles: 1 },
         autoProceed: false 
-    } )
+    });
+
 
     componentDidMount = () => {
-
-        this.uppy.use( XHRUpload, {
+        // use XHRUpload for photo uploads
+        this.uppy.use(XHRUpload, {
             endpoint: './fileupload'
-        } )
+        });
 
+        // on completion of upload set url
         this.uppy.on( 'complete', ( result ) => {
             let url = 'images/' + result.successful[0].name;
-            this.props.handleUploadInput( url );
-        } )
-
+            // call handleUploadInput and pass it url of new photo upload
+            this.props.handleUploadInput(url);
+        });
     }
 
     handleOpen = ( event ) => {
+        // prevent page refresh on click
         event.preventDefault();
-        this.setState( {
+        // opens uppy modal when set to true
+        this.setState({
             modalOpen: true
-        } )
+        });
     }
 
     handleClose = () => {
-        this.setState( {
+        // closes uppy modal when set to false
+        this.setState({
             modalOpen: false
-        } )
+        });
     }
 
     render() {
@@ -67,6 +71,7 @@ class UppyModalWithButton extends Component {
 
         return (
             <React.Fragment>
+                {/* clicking upload image button opens uppy modal */}
                 <Button
                     variant="contained"
                     size="small"
@@ -77,8 +82,11 @@ class UppyModalWithButton extends Component {
                 </Button>
                 <DashboardModal
                     uppy={this.uppy}
+                    // close uppy dashboard modal if click outside of dashboard
                     closeModalOnClickOutside
+                    // uppy dashboard modal open toggles between true and false
                     open={this.state.modalOpen}
+                    // closes uppy dashboard modal
                     onRequestClose={this.handleClose}
                     plugins={['Webcam']}
                 />
@@ -87,8 +95,9 @@ class UppyModalWithButton extends Component {
     }
 }
 
+
 UppyModalWithButton.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withStyles( styles )( UppyModalWithButton );
+export default withStyles(styles)(UppyModalWithButton);
