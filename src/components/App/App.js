@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+
+// routing imports
 import {
   HashRouter as Router,
   Route,
@@ -6,27 +8,32 @@ import {
   Switch,
 } from 'react-router-dom';
 
+// connect to redux state
 import {connect} from 'react-redux';
 
+// my components
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 import UserNav from '../UserNav/UserNav';
-
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
-
 import FestivalDetail from '../FestivalDetail/FestivalDetail';
 import BandInfoForm from '../BandInfoForm/BandInfoForm';
-
-import './App.css';
-import AdminHome from '../AdminHome/AdminHome';
 import FestivalRespondents from '../FestivalRespondents/FestivalRespondents';
 import CreateFestForm from '../CreateFestForm/CreateFestForm';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+
+// import styles
+import './App.css';
+
+
+
+
 
 class App extends Component {
+
+  // get user info on component load
   componentDidMount () {
     this.props.dispatch({type: 'FETCH_USER'})
   }
