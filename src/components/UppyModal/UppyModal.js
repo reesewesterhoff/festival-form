@@ -4,11 +4,14 @@ import React, { Component } from 'react';
 import Uppy from '@uppy/core';
 import XHRUpload from '@uppy/xhr-upload';
 import { DashboardModal } from '@uppy/react';
+import './uppy.min.css'; // css not working
 
+//
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
-import './style.min.module.css';
+
 
 // This could also use Tus instead of xhr --
 // The server would have to change to use Tus as well.
@@ -29,7 +32,7 @@ class UppyModalWithButton extends Component {
 
     uppy = Uppy( {
         restrictions: { maxNumberOfFiles: 1 },
-        autoProceed: false // true is cool behaviour, but this shows it off better
+        autoProceed: false 
     } )
 
     componentDidMount = () => {
@@ -64,18 +67,18 @@ class UppyModalWithButton extends Component {
 
         return (
             <React.Fragment>
-                {/* <Button
+                <Button
                     variant="contained"
                     onClick={this.handleOpen}
                 >
                     Upload Image
-                </Button> */}
+                </Button>
                 <DashboardModal
                     uppy={this.uppy}
-                    // closeModalOnClickOutside
-                    // open={this.state.modalOpen}
-                    // onRequestClose={this.handleClose}
-                    // plugins={['Webcam']}
+                    closeModalOnClickOutside
+                    open={this.state.modalOpen}
+                    onRequestClose={this.handleClose}
+                    plugins={['Webcam']}
                 />
             </React.Fragment>
         );
