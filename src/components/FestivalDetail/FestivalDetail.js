@@ -90,10 +90,12 @@ class FestivalDetail extends Component {
         return (
             <div>
                 <div>
-                    <h1 className="tagline">Festival RSVP</h1>
-                    <p className="tagline">Please verify that you are responding to the correct festival than enter your information.</p>
-                    <p className="tagline">Upon clicking RSVP all of your current tour information along with your arrival time, notes, and requests will be</p>
-                    <p className="tagline">made visible to the festival promoter.</p>
+                    <div className="tagline">
+                        <h1>Festival RSVP</h1>
+                        <p>Please verify that you are responding to the correct festival than enter your information.</p>
+                        <p>Upon clicking RSVP all of your current tour information along with your arrival time, notes, and requests will be</p>
+                        <p>made visible to the festival promoter.</p>
+                    </div>
                     <form onSubmit={this.handleSubmit}>
                         <div className="inputDiv">
                             <br />
@@ -167,6 +169,8 @@ class FestivalDetail extends Component {
                             </Card>
                         </div>
                         : null}
+                    <br />
+                    <br />
                     <br />
                 </div>
             </div>
