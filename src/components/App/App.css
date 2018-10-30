@@ -9,7 +9,7 @@ body {
 }
 
 form {
-    background-image: linear-gradient( rgb(199, 255, 252), rgb(255, 255, 255));
+    background-image: linear-gradient( rgb(185, 236, 252), rgb(255, 255, 255));
     width: 30%;
     min-height: 250px;
     margin: 50px auto;
@@ -56,6 +56,12 @@ input {
 
 .tagline {
     color: darkslategray;
+    text-align: center;
+}
+
+.inputDiv {
+    width: 100%;
+    margin: auto;
     text-align: center;
 }
 
