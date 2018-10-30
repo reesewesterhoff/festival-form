@@ -19,6 +19,7 @@ const CustomTableCell = withStyles(theme => ({
     head: {
         backgroundColor: theme.palette.common.black,
         color: theme.palette.common.white,
+        fontSize: 18,
     },
     body: {
         fontSize: 14,
@@ -44,10 +45,6 @@ const styles = {
         textAlign: 'center',
         color: 'CornflowerBlue',
         margin: 10,
-    },
-    h1: {
-        textAlign: 'center',
-        color: 'DarkSlateGray',
     },
     root: {
         width: '100%',
@@ -93,7 +90,7 @@ class FestivalRespondents extends Component {
                             </Typography>
                             <Typography>
                                 <br />
-                                <img src={fest.image} height="500" alt="Music festival" />
+                                <img src={fest.image} height="400" alt="Music festival" />
                             </Typography>
                             <br />
                             <Typography className={classes.pos} color="textSecondary" variant="h5">
@@ -109,7 +106,7 @@ class FestivalRespondents extends Component {
                 <br />
                 <hr />
                 <br />
-                <h1 className={classes.h1}>{fest.name} Respondents</h1>
+                <h1 className="tagline">{fest.name} Respondents</h1>
                 <br />
                 {this.props.festivalRespondents.length !== 0 ?
                     <Paper className={classes.root}>
@@ -158,7 +155,7 @@ class FestivalRespondents extends Component {
                         </Table>
                     </Paper>
                     :
-                    <h2 className={classes.h1}>No Respondents Yet</h2>}
+                    <h2 className="tagline">No Respondents Yet</h2>}
                     <br />
                     <br />
                     <br />
