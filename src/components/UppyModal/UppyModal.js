@@ -19,7 +19,7 @@ import Button from '@material-ui/core/Button';
 const styles = {
 
     button: {
-        margin: 5,
+        margin: 10,
     },
 
 };
@@ -63,13 +63,15 @@ class UppyModalWithButton extends Component {
 
     render() {
 
-        // const { classes } = this.props;
+        const { classes } = this.props;
 
         return (
             <React.Fragment>
                 <Button
                     variant="contained"
+                    size="small"
                     onClick={this.handleOpen}
+                    className={classes.button}
                 >
                     Upload Image
                 </Button>

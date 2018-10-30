@@ -1,19 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import { connect } from 'react-redux';
 import UppyModal from '../UppyModal/UppyModal';
 import { withStyles } from '@material-ui/core/styles';
+import Modal from '@material-ui/core/Modal';
+import { Typography } from '@material-ui/core';
+import TextField from '@material-ui/core/TextField';
 
 
-const styles = {
-  button: {
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
+
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  };
+}
+
+
+const styles = theme => ({
+  editButton: {
     width: 200,
     height: 60,
     fontSize: 20,
@@ -24,9 +34,21 @@ const styles = {
     width: 200,
     margin: 'auto',
   },
-}
+  paper: {
+    position: 'absolute',
+    width: theme.spacing.unit * 60,
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing.unit * 4,
+    textAlign: 'center',
+  },
+  actionButtons: {
+    margin: 10,
+  },
+});
 
 class ResponsiveDialog extends React.Component {
+
   state = {
     open: false,
     name: this.props.band_info.name,
@@ -71,61 +93,109 @@ class ResponsiveDialog extends React.Component {
 
   render() {
 
-    const { fullScreen } = this.props;
     const { classes } = this.props;
 
     return (
       <div>
         <div className={classes.center}>
-          <Button className={classes.button} variant="contained" onClick={this.handleClickOpen}>Edit Tour Information</Button>
+          <Button className={classes.editButton} variant="contained" onClick={this.handleClickOpen}>Edit Tour Information</Button>
         </div>
-        <Dialog
-          fullScreen={fullScreen}
+        <Modal
           open={this.state.open}
           onClose={this.handleClose}
-          aria-labelledby="responsive-dialog-title"
+          aria-labelledby="simple-modal-title"
+          aria-describedby="simple-modal-description"
         >
-          <DialogTitle id="responsive-dialog-title">{"Edit Tour Information"}</DialogTitle>
-          <DialogContent>
-            <DialogContentText>
-              <label> Band Name
-                <input type="text" value={this.state.name} onChange={this.handleChangeFor('name')} />
-              </label>
+          <div style={getModalStyle()} className={classes.paper}>
+            <Typography variant="h5" id="modal-title">
+              Update Tour Information
+          </Typography>
+            <Typography variant="subtitle1">
+              Enter in the current tour information. Clicking update will store all new information.
+            </Typography>
+            <br />
+            {/* <Typography> */}
+              <div>
+                <TextField
+                  type="text"
+                  label="Band Name"
+                  value={this.state.name}
+                  onChange={this.handleChangeFor('name')}
+                />
+              </div>
               <br />
-              <label> Tech Rider
+              <div>
+                <TextField
+                  type="text"
+                  label="Tech Rider"
+                  value={this.state.tech_rider}
+                  readOnly
+                  disabled
+                />
                 <UppyModal handleUploadInput={this.handleUploadInputFor('tech_rider')} />
-              </label>
+              </div>
               <br />
-              <label> Band Rider
+              <div>
+                <TextField
+                  type="text"
+                  label="Hospitality Rider"
+                  value={this.state.band_rider}
+                  readOnly
+                  disabled
+                />
                 <UppyModal handleUploadInput={this.handleUploadInputFor('band_rider')} />
-              </label>
+              </div>
               <br />
-              <label> Stage Plot
+              <div>
+                <TextField
+                  type="text"
+                  label="Stage Plot"
+                  value={this.state.stage_plot}
+                  readOnly
+                  disabled
+                />
                 <UppyModal handleUploadInput={this.handleUploadInputFor('stage_plot')} />
-              </label>
+              </div>
               <br />
-              <label> Input List
+              <div>
+                <TextField
+                  type="text"
+                  label="Input List"
+                  value={this.state.input_list}
+                  readOnly
+                  disabled
+                />
                 <UppyModal handleUploadInput={this.handleUploadInputFor('input_list')} />
-              </label>
+              </div>
               <br />
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose} color="secondary">
+            {/* </Typography> */}
+            <Button 
+              className={classes.actionButtons}
+              onClick={this.handleClose} 
+              color="secondary"
+              size="large"
+              variant="outlined"
+            >
               Cancel
             </Button>
-            <Button onClick={this.updateState} color="primary" autoFocus>
+            <Button
+              className={classes.actionButtons} 
+              onClick={this.updateState} 
+              color="primary" 
+              size="large"
+              variant="outlined"
+              autoFocus
+            >
               Update
             </Button>
-          </DialogActions>
-        </Dialog>
+          </div>
+        </Modal>
       </div>
     );
   }
 }
 
 ResponsiveDialog.propTypes = {
-  fullScreen: PropTypes.bool.isRequired,
   classes: PropTypes.object.isRequired,
 };
 
