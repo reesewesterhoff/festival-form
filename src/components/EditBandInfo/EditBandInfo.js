@@ -1,26 +1,17 @@
-import React from 'react';
+import React, { Component } from 'react';
+// connect to redux state
+import { connect } from 'react-redux';
+// material-ui imports
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
-import { connect } from 'react-redux';
-import UppyModalWithButton from '../UppyModalWithButton/UppyModalWithButton';
 import { withStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Typography } from '@material-ui/core';
 import TextField from '@material-ui/core/TextField';
+// my uppy component
+import UppyModalWithButton from '../UppyModalWithButton/UppyModalWithButton';
 
-
-function getModalStyle() {
-  const top = 50;
-  const left = 50;
-
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
-
-
+// jss styles
 const styles = theme => ({
   editButton: {
     width: 200,
@@ -35,6 +26,9 @@ const styles = theme => ({
   },
   paper: {
     position: 'absolute',
+    top: `50%`,
+    left: `50%`,
+    transform: `translate(-50%, -50%)`,
     width: theme.spacing.unit * 60,
     backgroundColor: theme.palette.background.paper,
     boxShadow: theme.shadows[5],
@@ -46,49 +40,56 @@ const styles = theme => ({
   },
 });
 
-class EditBandInfo extends React.Component {
-
+class EditBandInfo extends Component {
+  // define state and set properties equal to the current band information for that user
   state = {
+    // modal not open 
     open: false,
     name: this.props.band_info.name,
     tech_rider: this.props.band_info.tech_rider,
     band_rider: this.props.band_info.band_rider,
     stage_plot: this.props.band_info.stage_plot,
     input_list: this.props.band_info.input_list,
+    // gets user's id from redux state
     id: this.props.user.id,
   };
 
+  // handles input field changes, curried function
   handleChangeFor = property => event => {
     this.setState({
       ...this.state,
       [property]: event.target.value,
     });
-  }
+  } // end handleChangeFor
 
+  // opens modal to update band information
   handleClickOpen = () => {
-    this.props.dispatch({ type: 'FETCH_BAND_INFO', payload: this.props.user.id });
+    // this.props.dispatch({ type: 'FETCH_BAND_INFO', payload: this.props.user.id });
     this.setState({ open: true });
-  };
+  }; // end handleClickOpen
 
+  // closes modal
   handleClose = () => {
     this.setState({ open: false });
-  };
+  }; // end handleClose
 
-
+  // handles information update 
   updateState = () => {
+    // dispatch action to update band info with new information
     this.props.dispatch({ type: 'UPDATE_BAND_INFO', payload: this.state });
+    // close modal
     this.handleClose();
-  }
+  }; // end updateState
 
+  // handle file uploads
   handleUploadInputFor = (property) => {
     return (uploadURL) => {
-      console.log(uploadURL);
       this.setState({
         ...this.state,
         [property]: uploadURL,
       })
     }
-  }
+  }; // end handleUploadInputFor
 
   render() {
 
@@ -96,6 +97,7 @@ class EditBandInfo extends React.Component {
 
     return (
       <div>
+        {/* big blue update info button, opens update modal */}
         <div className={classes.center}>
           <Button className={classes.editButton} variant="contained" onClick={this.handleClickOpen}>Edit Tour Information</Button>
         </div>
@@ -105,7 +107,8 @@ class EditBandInfo extends React.Component {
           aria-labelledby="simple-modal-title"
           aria-describedby="simple-modal-description"
         >
-          <div style={getModalStyle()} className={classes.paper}>
+          {/* modal content */}
+          <div className={classes.paper}>
             <Typography variant="h5" id="modal-title">
               Update Tour Information
           </Typography>
@@ -129,6 +132,7 @@ class EditBandInfo extends React.Component {
                   value={this.state.tech_rider}
                   onChange={this.handleChangeFor('tech_rider')}
                 />
+              {/* bring in uppy component to handle file uploads */}
               <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('tech_rider')} />
             </div>
             <br />
@@ -192,7 +196,7 @@ EditBandInfo.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-
+// connect to redux state to access information there
 const mapStateToProps = state => {
   return {
     state,
@@ -200,6 +204,5 @@ const mapStateToProps = state => {
     user: state.user,
   };
 }
-
 
 export default withStyles(styles)(connect(mapStateToProps)(EditBandInfo));
