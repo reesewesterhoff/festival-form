@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
+// connect to redux
 import { connect } from 'react-redux';
+// contains individual item of each festival respondent
 import FestivalRespondentItem from '../FestivalRespondentItem/FestivalRespondentItem';
+// moment.js handles date and time formatting
 import moment from 'moment';
+// handles updating festival
 import EditFestival from '../EditFestival/EditFestival';
+// material-ui imports
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -15,6 +20,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+// table header is dark
 const CustomTableCell = withStyles(theme => ({
     head: {
         backgroundColor: theme.palette.common.black,
@@ -26,7 +32,7 @@ const CustomTableCell = withStyles(theme => ({
     },
 }))(TableCell);
 
-
+// jss styles
 const styles = {
     card: {
         marginTop: 30,
@@ -60,12 +66,13 @@ const styles = {
 
 class FestivalRespondents extends Component {
 
-
+    // handles delete of respondent
     deleteRespondent = (respondent) => {
-        console.log(respondent);
+        // dispatch action to delete a respondent, send clicked respondent
         this.props.dispatch({ type: 'DELETE_RESPONDENT', payload: respondent });
     }
 
+    // window scrolls to top on page load
     componentDidMount() {
         window.scrollTo(0, 0);
     }
@@ -79,6 +86,7 @@ class FestivalRespondents extends Component {
             <div>
                 <br />
                 {fest.id ?
+                    // show clicked festival on a card
                     <Card className={classes.card}>
                         <CardContent>
                             <Typography variant="h3" gutterBottom>
@@ -108,6 +116,7 @@ class FestivalRespondents extends Component {
                 <br />
                 <h1 className="tagline">{fest.name} Respondents</h1>
                 <br />
+                {/* festival respondents table */}
                 {this.props.festivalRespondents.length !== 0 ?
                     <Paper className={classes.root}>
                         <Table className={classes.table}>
@@ -132,10 +141,10 @@ class FestivalRespondents extends Component {
                                         Arrival Time
                                     </CustomTableCell>
                                     <CustomTableCell>
-                                        Requests
+                                        Notes
                                     </CustomTableCell>
                                     <CustomTableCell>
-                                        Notes
+                                        Requests
                                     </CustomTableCell>
                                     <CustomTableCell>
                                         Remove
@@ -155,6 +164,7 @@ class FestivalRespondents extends Component {
                         </Table>
                     </Paper>
                     :
+                    // display this if no one has responded to the festival
                     <h2 className="tagline">No Respondents Yet</h2>}
                     <br />
                     <br />
@@ -168,6 +178,7 @@ FestivalRespondents.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
+// connect to redux state to access information there
 const mapStateToProps = state => {
     return {
         state,
