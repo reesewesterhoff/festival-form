@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// material-ui imports
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -6,32 +7,44 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Slide from '@material-ui/core/Slide';
+// icon import
 import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 
-
+// makes pop up slide up from bottom
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
-class AlertDialogSlide extends Component {
+class ConfirmDeleteRespondent extends Component {
+  // define state, set dialog box open property to false
   state = {
     open: false,
   };
 
+  // sets state of open to true (opens dialog box)
   handleClickOpen = () => {
     this.setState({ open: true });
-  };
+  }; // end handleClickOpen
 
+  // sets state of open to false (closes dialog box)
   handleClose = () => {
     this.setState({ open: false });
-  };
+  }; // end handleClose
 
 
   render() {
     
     return (
       <div>
-        <Button onClick={this.handleClickOpen} size="large" variant="outlined" color="secondary" ><DeleteRoundedIcon /></Button>
+        {/* button with delete icon */}
+        <Button 
+          onClick={this.handleClickOpen} 
+          size="large" 
+          variant="outlined" 
+          color="secondary" 
+        >
+          <DeleteRoundedIcon />
+        </Button>
         <Dialog
           open={this.state.open}
           TransitionComponent={Transition}
@@ -40,6 +53,7 @@ class AlertDialogSlide extends Component {
           aria-labelledby="alert-dialog-slide-title"
           aria-describedby="alert-dialog-slide-description"
         >
+        {/* dialog box content */}
           <DialogTitle id="alert-dialog-slide-title">
             {"Delete respondent?"}
           </DialogTitle>
@@ -52,6 +66,7 @@ class AlertDialogSlide extends Component {
             <Button onClick={this.handleClose} color="primary">
               Cancel
             </Button>
+            {/* run delete respondent function on confirm delete (in FestivalRepondents component) */}
             <Button onClick={() => this.props.deleteRespondent(this.props.respondent)} color="secondary">
               Delete
             </Button>
@@ -62,4 +77,4 @@ class AlertDialogSlide extends Component {
   }
 }
 
-export default AlertDialogSlide;
+export default ConfirmDeleteRespondent;
