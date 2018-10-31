@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+// connect to redux
 import { connect } from 'react-redux';
+// 
 import FestivalItem from '../FestivalItem/FestivalItem';
 import { withRouter } from 'react-router-dom';
 import { withStyles } from '@material-ui/core/styles';
