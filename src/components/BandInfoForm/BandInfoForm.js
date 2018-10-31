@@ -18,12 +18,9 @@ const styles = {
         margin: 40,
     },
     card: {
-        marginTop: 30,
-        margin: 10,
-        maxWidth: 450,
-        height: 500,
+        margin: 'auto',
+        maxWidth: 700,
         textAlign: 'center',
-        display: 'inline-block',
     },
 }
 
@@ -89,45 +86,27 @@ class BandInfoForm extends Component {
                         <EditBandInfo />
                         <br />
                         <br />
-                        <h2 className={classes.h2}>Current Tour Information</h2>
                         <div className="cardDiv">
                             <Card className={classes.card}>
                                 <CardContent>
                                     <Typography variant="h3">
-                                        Tech Rider
+                                        Current Tour Information
                                     </Typography>
                                     <hr />
                                     <br />
+                                    <h3>Tech Rider</h3>
                                     <img src={this.props.band_info.tech_rider} width="400" alt="Music festival" />
-                                </CardContent>
-                            </Card>
-                            <Card className={classes.card}>
-                                <CardContent>
-                                    <Typography variant="h3">
-                                        Hospitality Rider
-                                        </Typography>
-                                    <hr />
                                     <br />
+                                    <br />
+                                    <h3>Hospitality Rider</h3>
                                     <img src={this.props.band_info.band_rider} width="400" alt="Music festival" />
-                                </CardContent>
-                            </Card>
-                            <Card className={classes.card}>
-                                <CardContent>
-                                    <Typography variant="h3">
-                                        Stage Plot
-                                        </Typography>
-                                    <hr />
                                     <br />
+                                    <br />
+                                    <h3>Stage Plot</h3>
                                     <img src={this.props.band_info.stage_plot} width="400" alt="Music festival" />
-                                </CardContent>
-                            </Card>
-                            <Card className={classes.card}>
-                                <CardContent>
-                                    <Typography variant="h3">
-                                        Input List
-                                        </Typography>
-                                    <hr />
                                     <br />
+                                    <br />
+                                    <h3>Input List</h3>
                                     <img src={this.props.band_info.input_list} width="400" alt="Music festival" />
                                 </CardContent>
                             </Card>
@@ -138,10 +117,9 @@ class BandInfoForm extends Component {
                     </>
                     :
                     <>
-
                         <form onSubmit={this.handleSubmit}>
                             <div className="inputDiv">
-                                <h2>Please upload current band information.</h2>
+                            <h2 className={classes.h2}>Please upload current band information.</h2>
                                 <br />
                                 <TextField
                                     type="text"

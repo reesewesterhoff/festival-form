@@ -78,7 +78,7 @@ class UppyModalWithButton extends Component {
                     onClick={this.handleOpen}
                     className={classes.button}
                 >
-                    Upload Image
+                    Upload
                 </Button>
                 <DashboardModal
                     uppy={this.uppy}

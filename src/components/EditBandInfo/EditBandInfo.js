@@ -124,12 +124,11 @@ class EditBandInfo extends React.Component {
             <br />
             <div>
               <TextField
-                type="text"
-                label="Tech Rider"
-                value={this.state.tech_rider}
-                readOnly
-                disabled
-              />
+                  type="text"
+                  label="Tech Rider"
+                  value={this.state.tech_rider}
+                  onChange={this.handleChangeFor('tech_rider')}
+                />
               <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('tech_rider')} />
             </div>
             <br />
@@ -138,8 +137,7 @@ class EditBandInfo extends React.Component {
                 type="text"
                 label="Hospitality Rider"
                 value={this.state.band_rider}
-                readOnly
-                disabled
+                onChange={this.handleChangeFor('band_rider')}
               />
               <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('band_rider')} />
             </div>
@@ -149,8 +147,7 @@ class EditBandInfo extends React.Component {
                 type="text"
                 label="Stage Plot"
                 value={this.state.stage_plot}
-                readOnly
-                disabled
+                onChange={this.handleChangeFor('stage_plot')}
               />
               <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('stage_plot')} />
             </div>
@@ -160,8 +157,7 @@ class EditBandInfo extends React.Component {
                 type="text"
                 label="Input List"
                 value={this.state.input_list}
-                readOnly
-                disabled
+                onChange={this.handleChangeFor('input_list')}
               />
               <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('input_list')} />
             </div>

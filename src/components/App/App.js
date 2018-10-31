@@ -17,7 +17,7 @@ import Footer from '../Footer/Footer';
 import UserNav from '../UserNav/UserNav';
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
-import InfoPage from '../InfoPage/InfoPage';
+// import InfoPage from '../InfoPage/InfoPage';
 import FestivalDetail from '../FestivalDetail/FestivalDetail';
 import BandInfoForm from '../BandInfoForm/BandInfoForm';
 import FestivalRespondents from '../FestivalRespondents/FestivalRespondents';
