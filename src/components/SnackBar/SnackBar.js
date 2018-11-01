@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 
-class PositionedSnackbar extends React.Component {
+class Snackbar extends React.Component {
   state = {
     open: false,
     vertical: 'top',
@@ -38,4 +38,4 @@ class PositionedSnackbar extends React.Component {
   }
 }
 
-export default PositionedSnackbar;
+export default Snackbar;

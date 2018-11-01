@@ -1,15 +1,18 @@
 import React, { Component } from 'react';
+// handles time format
 import moment from 'moment';
 
-class Blink extends Component {
+class Time extends Component {
   constructor(props) {
     super(props);
-    this.state = { isShowingText: true };
+    this.state = { 
+      refresh: true 
+    };
 
     // Toggle the state every 30 seconds
     setInterval(() => {
       this.setState(previousState => {
-        return { isShowingText: !previousState.isShowingText };
+        return { refresh: !previousState.refresh };
       });
     }, 30000);
   }
@@ -23,4 +26,4 @@ class Blink extends Component {
   }
 }
 
-export default Blink;
+export default Time;
