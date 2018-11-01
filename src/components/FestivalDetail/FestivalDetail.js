@@ -12,6 +12,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
+import SnackBar from '../SnackBar/SnackBar';
 
 // jss styles
 const styles = {
@@ -94,6 +95,7 @@ class FestivalDetail extends Component {
 
         let fest = this.props.festToRespond;
         const { classes } = this.props;
+        let icon = <DoneAllIcon />
 
         return (
             <div>
@@ -114,6 +116,7 @@ class FestivalDetail extends Component {
                             <TextField
                                     type="time"
                                     variant="outlined"
+                                    required
                                     value={this.state.response.arrival_time}
                                     onChange={this.handleChangeFor('arrival_time')}
                                 />
@@ -138,18 +141,14 @@ class FestivalDetail extends Component {
                             />
                             <br />
                             <br />
-                            <Button
-                                type="submit"
-                                value="Submit"
-                                size="medium"
-                                color="primary"
-                                variant="outlined"
-                            >
-                                RSVP <DoneAllIcon />
-                            </Button>
+                                <SnackBar 
+                                    fest={fest}
+                                    buttonText="RSVP"
+                                    message={"Success responding to " + fest.name}
+                                />
                         </div>
                     </form>
-                    <br />
+                    <br /> 
                 </div>
                 <div>
                     {fest.id ?

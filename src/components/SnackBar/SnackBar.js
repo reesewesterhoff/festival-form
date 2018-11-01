@@ -1,8 +1,9 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
+import DoneAllIcon from '@material-ui/icons/DoneAll';
 
-class Snackbar extends React.Component {
+class SnackBar extends React.Component {
   state = {
     open: false,
     vertical: 'top',
@@ -21,21 +22,29 @@ class Snackbar extends React.Component {
     const { vertical, horizontal, open } = this.state;
     return (
       <div>
-        <Button onClick={this.handleClick({ vertical: 'top', horizontal: 'center' })}>
-          Top-Center
+        <Button
+          type="submit"
+          value="Submit"
+          size="medium"
+          color="primary"
+          variant="outlined"
+          onClick={this.handleClick({ vertical: 'top', horizontal: 'center' })}
+        >
+          {this.props.buttonText} <DoneAllIcon />
         </Button>
         <Snackbar
           anchorOrigin={{ vertical, horizontal }}
           open={open}
+          autoHideDuration={5000}
           onClose={this.handleClose}
           ContentProps={{
             'aria-describedby': 'message-id',
           }}
-          message={<span id="message-id">I love snacks</span>}
+          message={<span id="message-id">{this.props.message}</span>}
         />
       </div>
     );
   }
 }
 
-export default Snackbar;
+export default SnackBar;

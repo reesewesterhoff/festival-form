@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 // material-ui imports
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import SnackBar from '../SnackBar/SnackBar';
 
 
 class CreateFestForm extends Component {
@@ -93,14 +94,10 @@ class CreateFestForm extends Component {
                     <br />
                     <br />
                     <br />
-                    <Button 
-                        type="submit" 
-                        value="Create Festival" 
-                        variant="outlined" 
-                        color="primary"
-                    >
-                        Create Festival
-                    </Button>
+                    <SnackBar 
+                        buttonText="Create Festival"
+                        message="Festival created successfully!"
+                    />
                 </form>
             </div>
         );
