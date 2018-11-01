@@ -12,6 +12,7 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import GetApp from '@material-ui/icons/GetApp';
 
 // jss styles
 const styles = {
@@ -19,6 +20,11 @@ const styles = {
         margin: 'auto',
         maxWidth: 700,
         textAlign: 'center',
+    },
+    icon: {
+        margin: 2,
+        fontSize: 32,
+        color: 'CornflowerBlue',
     },
 }
 
@@ -87,7 +93,7 @@ class BandInfoForm extends Component {
                 {/* if user has previously uploaded band info, show info and edit info button */}
                 {this.props.band_info.id ?
                     <>
-                        <h2 className="tagline" style={{margin: 40}}>Your information is stored! Click the Update Tour Information button to edit.</h2>
+                        <h2 className="tagline" style={{ margin: 40 }}>Your information is stored! Click the Update Tour Information button to edit.</h2>
                         <EditBandInfo />
                         <br />
                         <br />
@@ -100,19 +106,25 @@ class BandInfoForm extends Component {
                                     <hr />
                                     <br />
                                     <h3>Tech Rider</h3>
-                                    <img src={this.props.band_info.tech_rider} width="400" alt="Music festival" />
+                                    <object data={this.props.band_info.tech_rider} width="400" alt="Tech Rider">
+                                        <p>Tech Rider. This browser does not support PDFs. Please download the PDF to view it</p>
+                                    </object>
+                                    <a href={this.props.band_info.tech_rider} download><GetApp className={classes.icon} /></a>
                                     <br />
                                     <br />
                                     <h3>Hospitality Rider</h3>
-                                    <img src={this.props.band_info.band_rider} width="400" alt="Music festival" />
+                                    <img src={this.props.band_info.band_rider} width="400" alt="Hospitality Rider" />
+                                    <a href={this.props.band_info.band_rider} download><GetApp className={classes.icon} /></a>
                                     <br />
                                     <br />
                                     <h3>Stage Plot</h3>
-                                    <img src={this.props.band_info.stage_plot} width="400" alt="Music festival" />
+                                    <img src={this.props.band_info.stage_plot} width="400" alt="Stage Plot" />
+                                    <a href={this.props.band_info.stage_plot} download><GetApp className={classes.icon} /></a>
                                     <br />
                                     <br />
                                     <h3>Input List</h3>
-                                    <img src={this.props.band_info.input_list} width="400" alt="Music festival" />
+                                    <img src={this.props.band_info.input_list} width="400" alt="Input List" />
+                                    <a href={this.props.band_info.input_list} download><GetApp className={classes.icon} /></a>
                                 </CardContent>
                             </Card>
                             <br />
@@ -125,7 +137,7 @@ class BandInfoForm extends Component {
                     <>
                         <form onSubmit={this.handleSubmit}>
                             <div className="inputDiv">
-                            <h2 className="tagline" style={{margin: 40}}>Please upload current band information.</h2>
+                                <h2 className="tagline" style={{ margin: 40 }}>Please upload current band information.</h2>
                                 <br />
                                 <TextField
                                     type="text"
