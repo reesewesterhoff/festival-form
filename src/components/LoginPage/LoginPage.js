@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
+// connect to redux
 import { connect } from 'react-redux';
+// material-ui for input
 import TextField from '@material-ui/core/TextField';
 
 class LoginPage extends Component {
+  // define state
   state = {
     username: '',
     password: '',
   };
 
   login = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // prevent refresh
 
+    // requires the username and password fields to not be empty strings
     if (this.state.username && this.state.password) {
       this.props.dispatch({
         type: 'LOGIN',
@@ -24,6 +28,7 @@ class LoginPage extends Component {
     }
   } // end login
 
+  // handles changes in the inputs, curried function
   handleInputChangeFor = propertyName => (event) => {
     this.setState({
       [propertyName]: event.target.value,
