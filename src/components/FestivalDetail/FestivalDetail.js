@@ -10,8 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
+// use snackbar component for form submission
 import SnackBar from '../SnackBar/SnackBar';
 
 // jss styles
@@ -19,21 +19,10 @@ const styles = {
     card: {
         marginTop: 30,
         margin: 'auto',
-        minWidth: 275,
-        maxWidth: 700,
+        minWidth: 300,
+        maxWidth: 600,
         textAlign: 'center',
-        display: 'flex',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
-        justifyContent: 'space-evenly',
-    },
-    pos: {
-        marginBottom: 12,
-    },
-    countDown: {
-        textAlign: 'center',
-        color: 'CornflowerBlue',
-        margin: 10,
+        marginBottom: 70,
     },
 };
 
@@ -103,13 +92,11 @@ class FestivalDetail extends Component {
                     {/* instructions to user */}
                     <div className="tagline">
                         <h1>Festival RSVP</h1>
-                        <p>Please verify that you are responding to the correct festival than enter your information.</p>
-                        <p>Upon clicking RSVP all of your current tour information along with your arrival time, notes, and requests will be</p>
-                        <p>made visible to the festival promoter.</p>
+                        <p>Please verify that you are responding to the correct festival, then enter your information. Upon clicking RSVP, all of</p>
+                        <p>your current tour information along with your arrival time, notes, and requests will be made visible to the festival promoter.</p>
                     </div>
                     <form onSubmit={this.handleSubmit}>
                         <div className="inputDiv">
-                            <br />
                             <p className="tagline">Please enter your arrival time and any notes or requests you might have for the festival promoter.</p>
                             <br />
                             <label>Arrival Time
@@ -141,14 +128,14 @@ class FestivalDetail extends Component {
                             />
                             <br />
                             <br />
-                                <SnackBar 
-                                    fest={fest}
-                                    buttonText="RSVP"
-                                    message={"Success responding to " + fest.name}
-                                />
+                            <SnackBar
+                                fest={fest}
+                                buttonText="RSVP"
+                                message={"Success responding to " + fest.name}
+                                icon={icon}
+                            />
                         </div>
                     </form>
-                    <br /> 
                 </div>
                 <div>
                     {fest.id ?
@@ -160,7 +147,7 @@ class FestivalDetail extends Component {
                                         {fest.name}
                                         <br />
                                     </Typography>
-                                    <Typography className={classes.countDown} color="textSecondary" variant="h6">
+                                    <Typography id="countDown" color="textSecondary" variant="h6">
                                         {/* countdown to festival, format with moment.js */}
                                         Happening {moment(fest.date, "YYYYMMDD").fromNow()}
                                     </Typography>
@@ -169,7 +156,7 @@ class FestivalDetail extends Component {
                                         <img src={fest.image} height="300" alt="Music festival" />
                                     </Typography>
                                     <br />
-                                    <Typography className={classes.pos} color="textSecondary" variant="h5">
+                                    <Typography color="textSecondary" variant="h5">
                                         {/* format date with moment.js */}
                                         {moment(fest.date).format('M-DD-YYYY')}
                                         <br />
@@ -179,10 +166,8 @@ class FestivalDetail extends Component {
                                 </CardContent>
                             </Card>
                         </div>
+                        // if there is nothing in festToRespond redux state, show nothing
                         : null}
-                    <br />
-                    <br />
-                    <br />
                 </div>
             </div>
         );

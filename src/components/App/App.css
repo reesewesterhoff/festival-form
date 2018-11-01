@@ -69,3 +69,9 @@ img {
     padding:1px;
     border:1px solid #021a40;
  }
+
+ #countDown {
+    text-align: 'center';
+    color: cornflowerblue;
+    margin: 10;
+ }

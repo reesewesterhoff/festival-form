@@ -1,7 +1,6 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
-import DoneAllIcon from '@material-ui/icons/DoneAll';
 
 class SnackBar extends React.Component {
   state = {
@@ -30,7 +29,7 @@ class SnackBar extends React.Component {
           variant="outlined"
           onClick={this.handleClick({ vertical: 'top', horizontal: 'center' })}
         >
-          {this.props.buttonText} <DoneAllIcon />
+          {this.props.buttonText} {this.props.icon}
         </Button>
         <Snackbar
           anchorOrigin={{ vertical, horizontal }}

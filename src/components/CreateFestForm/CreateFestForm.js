@@ -1,12 +1,8 @@
-// import react
 import React, { Component } from 'react';
-
 // connect to redux state
 import { connect } from 'react-redux';
-
 // material-ui imports
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import SnackBar from '../SnackBar/SnackBar';
 
 
