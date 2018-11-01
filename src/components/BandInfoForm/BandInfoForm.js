@@ -1,32 +1,12 @@
 import React, { Component } from 'react';
 // connect component to redux
 import { connect } from 'react-redux';
-// my component, displays after initial upload of tour information
-import EditBandInfo from '../EditBandInfo/EditBandInfo';
 // material-ui imports
 import UppyModalWithButton from '../UppyModalWithButton/UppyModalWithButton';
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import GetApp from '@material-ui/icons/GetApp';
+import CurrentBandInfo from '../CurrentBandInfo/CurrentBandInfo';
 
-// jss styles
-const styles = {
-    card: {
-        margin: 'auto',
-        maxWidth: 700,
-        textAlign: 'center',
-    },
-    icon: {
-        margin: 2,
-        fontSize: 32,
-        color: 'CornflowerBlue',
-    },
-}
 
 class BandInfoForm extends Component {
     // define state and create properties to be controlled by inputs on DOM (except for person_id)
@@ -64,7 +44,6 @@ class BandInfoForm extends Component {
                 input_list: '',
             }
         });
-
     }; // end handleSubmit
 
     // handle uppy file uploads, curried function
@@ -82,62 +61,18 @@ class BandInfoForm extends Component {
         this.props.dispatch({ type: 'FETCH_BAND_INFO', payload: this.props.user.id });
     }
 
-
-
     render() {
-
-        const { classes } = this.props;
-
         return (
             <div>
-                {/* if user has previously uploaded band info, show info and edit info button */}
+                {/* if user has previously uploaded band info, show CurrentBandInfo component */}
                 {this.props.band_info.id ?
-                    <>
-                        <h2 className="tagline" style={{ margin: 40 }}>Your information is stored! Click the Update Tour Information button to edit.</h2>
-                        <EditBandInfo />
-                        <br />
-                        <br />
-                        <div className="cardDiv">
-                            <Card className={classes.card}>
-                                <CardContent>
-                                    <Typography variant="h4">
-                                        Current Tour Information
-                                    </Typography>
-                                    <hr />
-                                    <br />
-                                    <h3>Tech Rider</h3>
-                                    <object data={this.props.band_info.tech_rider} width="400" alt="Tech Rider">
-                                        <p>Tech Rider. This browser does not support PDFs. Please download the PDF to view it</p>
-                                    </object>
-                                    <a href={this.props.band_info.tech_rider} download><GetApp className={classes.icon} /></a>
-                                    <br />
-                                    <br />
-                                    <h3>Hospitality Rider</h3>
-                                    <img src={this.props.band_info.band_rider} width="400" alt="Hospitality Rider" />
-                                    <a href={this.props.band_info.band_rider} download><GetApp className={classes.icon} /></a>
-                                    <br />
-                                    <br />
-                                    <h3>Stage Plot</h3>
-                                    <img src={this.props.band_info.stage_plot} width="400" alt="Stage Plot" />
-                                    <a href={this.props.band_info.stage_plot} download><GetApp className={classes.icon} /></a>
-                                    <br />
-                                    <br />
-                                    <h3>Input List</h3>
-                                    <img src={this.props.band_info.input_list} width="400" alt="Input List" />
-                                    <a href={this.props.band_info.input_list} download><GetApp className={classes.icon} /></a>
-                                </CardContent>
-                            </Card>
-                            <br />
-                            <br />
-                            <br />
-                        </div>
-                    </>
+                    <CurrentBandInfo />
                     // if the user has not previously uploaded tour information, show the initial upload form
                     :
                     <>
                         <form onSubmit={this.handleSubmit}>
                             <div className="inputDiv">
-                                <h2 className="tagline" style={{ margin: 40 }}>Please upload current band information.</h2>
+                                <h2 className="tagline" style={{ margin: 40 }}>Please upload PDFs or Images of current band information.</h2>
                                 <br />
                                 <TextField
                                     type="text"
@@ -211,9 +146,6 @@ class BandInfoForm extends Component {
     }
 }
 
-BandInfoForm.propTypes = {
-    classes: PropTypes.object.isRequired,
-};
 // necessary to use information from the redux state
 const mapStateToProps = state => {
     return {
@@ -222,4 +154,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default withStyles(styles)(connect(mapStateToProps)(BandInfoForm));
+export default connect(mapStateToProps)(BandInfoForm);
