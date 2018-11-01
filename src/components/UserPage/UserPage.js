@@ -7,10 +7,10 @@ class UserPage extends Component {
     this.props.dispatch({ type: 'LOGOUT' });
   }
 
+  // get users band info and a list of all festivals from the database on home page load
   componentDidMount() {
     this.props.dispatch({ type: 'FETCH_ALL_FESTIVALS' });
     this.props.dispatch({ type: 'FETCH_BAND_INFO', payload: this.props.user.id });
-
   }
 
 
@@ -22,6 +22,7 @@ class UserPage extends Component {
         </h1>
         <br />
         <hr />
+        {/* display "active festivals" if the user is admin (id=1) */}
         {this.props.user.id === 1 
           ?
           <h2 style={{ textAlign: 'center' }} className="tagline">Active Festivals</h2>
@@ -29,6 +30,7 @@ class UserPage extends Component {
           <h2 style={{ textAlign: 'center' }} className="tagline">All Festivals</h2>
         }
         <hr />
+        {/* list of all festivals on cards */}
         <FestivalsList
           id={this.props.user.id}
         />
@@ -40,9 +42,7 @@ class UserPage extends Component {
   }
 }
 
-// Instead of taking everything from state, we just want the user info.
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({user}) => ({ user });
+// Instead of taking everything from state, we just want the user and festivals info
 const mapStateToProps = state => ({
   festivals: state.festivals,
   user: state.user,
