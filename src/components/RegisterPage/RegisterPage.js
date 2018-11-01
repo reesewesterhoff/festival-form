@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+// connect to redux
 import {connect} from 'react-redux';
+// material-ui
 import TextField from '@material-ui/core/TextField';
 
 class RegisterPage extends Component {
@@ -12,9 +14,10 @@ class RegisterPage extends Component {
   };
 
   registerUser = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // prevent page refresh on form submission
 
-    if (this.state.username && this.state.password) {
+    // make sure all inputs have some text 
+    if (this.state.username && this.state.password && this.state.first_name && this.state.last_name && this.state.email) {
       this.props.dispatch({
         type: 'REGISTER',
         payload: {
@@ -30,15 +33,17 @@ class RegisterPage extends Component {
     }
   } // end registerUser
 
+  // handles changes in the inputs, curried function
   handleInputChangeFor = propertyName => (event) => {
     this.setState({
       [propertyName]: event.target.value,
     });
-  }
+  } // end handleInputChangeFor
 
   render() {
     return (
       <div>
+        {/* error message area */}
         {this.props.errors.registrationMessage && (
           <h2
             className="alert"
@@ -47,6 +52,7 @@ class RegisterPage extends Component {
             {this.props.errors.registrationMessage}
           </h2>
         )}
+        {/* new user registration form */}
         <form onSubmit={this.registerUser}>
           <h1>Register User</h1>
           <br />
@@ -129,11 +135,8 @@ class RegisterPage extends Component {
 }
 
 // Instead of taking everything from state, we just want the error messages.
-// if you wanted you could write this code like this:
-// const mapStateToProps = ({errors}) => ({ errors });
 const mapStateToProps = state => ({
   errors: state.errors,
 });
 
 export default connect(mapStateToProps)(RegisterPage);
-
