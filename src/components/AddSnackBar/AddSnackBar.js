@@ -5,7 +5,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import CloseIcon from '@material-ui/icons/Close';
 import IconButton from '@material-ui/core/IconButton';
 
-class SnackBar extends React.Component {
+class AddSnackBar extends React.Component {
   //define state
   state = {
     open: false,
@@ -18,9 +18,10 @@ class SnackBar extends React.Component {
     this.setState({ open: true, ...state });
   }; // end handleClick
 
+  // handles close of snackbar
   handleClose = () => {
     this.setState({ open: false });
-  };
+  }; // end handleClose
 
   render() {
     const { vertical, horizontal, open } = this.state;
@@ -61,4 +62,4 @@ class SnackBar extends React.Component {
   }
 }
 
-export default SnackBar;
+export default AddSnackBar;

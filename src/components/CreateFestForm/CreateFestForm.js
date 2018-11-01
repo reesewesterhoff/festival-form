@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // material-ui imports
 import TextField from '@material-ui/core/TextField';
-import SnackBar from '../SnackBar/SnackBar';
+import AddSnackBar from '../AddSnackBar/AddSnackBar';
 
 
 class CreateFestForm extends Component {
@@ -90,7 +90,7 @@ class CreateFestForm extends Component {
                     <br />
                     <br />
                     <br />
-                    <SnackBar 
+                    <AddSnackBar 
                         buttonText="Create Festival"
                         message="Festival created successfully!"
                     />

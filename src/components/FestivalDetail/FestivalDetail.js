@@ -12,7 +12,7 @@ import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import DoneAllIcon from '@material-ui/icons/DoneAll';
 // use snackbar component for form submission
-import SnackBar from '../SnackBar/SnackBar';
+import AddSnackBar from '../AddSnackBar/AddSnackBar';
 
 // jss styles
 const styles = {
@@ -128,7 +128,7 @@ class FestivalDetail extends Component {
                             />
                             <br />
                             <br />
-                            <SnackBar
+                            <AddSnackBar
                                 fest={fest}
                                 buttonText="RSVP"
                                 message={"Success responding to " + fest.name}
