@@ -43,7 +43,7 @@ class FestivalRespondentItem extends Component {
             <TableRow className={classes.row} hover>
                 <TableCell className={classes.title}>{respondent.name}</TableCell>
                 <TableCell className={classes.td}>
-                    <img src={respondent.tech_rider} width="200" alt="Technical rider" />
+                    <object data={respondent.tech_rider} width="200" alt="Technical rider"></object>
                     <a href={respondent.tech_rider} download><GetApp className={classes.icon} /></a>
                 </TableCell>
                 <TableCell className={classes.td}>
