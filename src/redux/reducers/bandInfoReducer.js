@@ -1,3 +1,4 @@
+// set band information object to whatever comes back from the database for that users band info
 const bandInfoReducer = (state = {}, action) => {
     switch (action.type) {
         case 'SET_BAND_INFO':
@@ -9,4 +10,3 @@ const bandInfoReducer = (state = {}, action) => {
 
 
 export default bandInfoReducer;
-
