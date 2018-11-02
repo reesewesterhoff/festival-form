@@ -14,9 +14,9 @@ import ConfirmDeleteRespondent from '../ConfirmDeleteRespondent/ConfirmDeleteRes
 // jss styles
 const styles = {
     icon: {
-      margin: 2,
-      fontSize: 32,
-      color: 'CornflowerBlue',
+        margin: 2,
+        fontSize: 32,
+        color: 'CornflowerBlue',
     },
     row: {
         '&:nth-of-type(odd)': {
@@ -25,11 +25,12 @@ const styles = {
     },
     td: {
         fontSize: 16,
+        height: 210,
     },
     title: {
         fontSize: 24,
     }
-  };
+};
 
 class FestivalRespondentItem extends Component {
 
@@ -38,36 +39,70 @@ class FestivalRespondentItem extends Component {
         let respondent = this.props.respondent;
         const { classes } = this.props;
 
+        let techRiderCheck = respondent.tech_rider;
+        let techRiderEndsWith = techRiderCheck.endsWith(".pdf" || ".jpg" || ".png" || ".gif" || ".jpeg");
+
+        let bandRiderCheck = respondent.band_rider;
+        let bandRiderEndsWith = bandRiderCheck.endsWith(".pdf" || ".jpg" || ".png" || ".gif" || ".jpeg");
+
+        let stagePlotCheck = respondent.stage_plot;
+        let stagePlotEndsWith = stagePlotCheck.endsWith(".pdf" || ".jpg" || ".png" || ".gif" || ".jpeg");
+
+        let inputListCheck = respondent.input_list;
+        let inputListEndsWith = inputListCheck.endsWith(".pdf" || ".jpg" || ".png" || ".gif" || ".jpeg");
+
         return (
             // table populates with each respondents info
             <TableRow className={classes.row} hover>
                 <TableCell className={classes.title}>{respondent.name}</TableCell>
                 <TableCell className={classes.td}>
-                    <object data={respondent.tech_rider} width="200" alt="Technical rider">
-                        <p>{respondent.tech_rider}</p>
-                    </object>
+                    {techRiderEndsWith ?
+                        <object data={respondent.tech_rider} width="250" height="200">
+                            <p>{respondent.tech_rider}</p>
+                        </object>
+                        :
+                        <img src={respondent.tech_rider} width="250" alt={respondent.tech_rider} />
+                    }
                     <a href={respondent.tech_rider} download><GetApp className={classes.icon} /></a>
                 </TableCell>
                 <TableCell className={classes.td}>
-                    <img src={respondent.band_rider} width="200" alt={respondent.band_rider} />
-                    <a href={respondent.band_rider} download><GetApp className={classes.icon} /></a> 
+                    {bandRiderEndsWith ?
+                        <object data={respondent.band_rider} width="250" height="200">
+                            <p>{respondent.band_rider}</p>
+                        </object>
+                        :
+                        <img src={respondent.band_rider} width="250" alt={respondent.band_rider} />
+                    }
+                    <a href={respondent.band_rider} download><GetApp className={classes.icon} /></a>
                 </TableCell>
                 <TableCell className={classes.td}>
-                     <img src={respondent.stage_plot} width="200" alt="Stage plot" />
-                     <a href={respondent.stage_plot} download><GetApp className={classes.icon} /></a>
+                    {stagePlotEndsWith ?
+                        <object data={respondent.stage_plot} width="250" height="200">
+                            <p>{respondent.stage_plot}</p>
+                        </object>
+                        :
+                        <img src={respondent.stage_plot} width="250" alt={respondent.stage_plot} />
+                    }
+                    <a href={respondent.stage_plot} download><GetApp className={classes.icon} /></a>
                 </TableCell>
                 <TableCell className={classes.td}>
-                    <img src={respondent.input_list} width="200" alt="Input list" />
+                    {inputListEndsWith ?
+                        <object data={respondent.input_list} width="250" height="200">
+                            <p>{respondent.input_list}</p>
+                        </object>
+                        :
+                        <img src={respondent.input_list} width="250" alt={respondent.input_list} />
+                    }
                     <a href={respondent.input_list} download><GetApp className={classes.icon} /></a>
                 </TableCell>
                 <TableCell className={classes.td}>{moment(respondent.arrival_time, 'hh:mm:ss').format('h:mm A')}</TableCell>
                 <TableCell className={classes.td}>{respondent.notes}</TableCell>
-                <TableCell className={classes.td}>{respondent.requests}</TableCell> 
+                <TableCell className={classes.td}>{respondent.requests}</TableCell>
                 <TableCell>
-                        <ConfirmDeleteRespondent 
-                            deleteRespondent={this.props.deleteRespondent}
-                            respondent={respondent}
-                        />
+                    <ConfirmDeleteRespondent
+                        deleteRespondent={this.props.deleteRespondent}
+                        respondent={respondent}
+                    />
                 </TableCell>
             </TableRow>
         );
@@ -76,6 +111,6 @@ class FestivalRespondentItem extends Component {
 
 FestivalRespondentItem.propTypes = {
     classes: PropTypes.object.isRequired,
-  };
+};
 
 export default withStyles(styles)(FestivalRespondentItem);

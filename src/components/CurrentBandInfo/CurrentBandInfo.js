@@ -30,27 +30,22 @@ class CurrentBandInfo extends Component {
     // get band info on page load, specific to user, gets info by user's id
     componentDidMount() {
         this.props.dispatch({ type: 'FETCH_BAND_INFO', payload: this.props.user.id });
-        console.log(this.props.band_info.tech_rider);
-        this.checkIfFileOrString('Westerhoff');
-        
     }
-
-    // checkIfFileOrString = (stringToCheck) => {   
-    //     let lastFourChars = [];     
-    //     let splitString = stringToCheck.split("");
-    //     console.log('split string', splitString);
-
-    //     let reverseArray = splitString.reverse();
-    //     console.log('reverse array', reverseArray);
-        
-    //     for(let i=splitString.length-1; i<4; i++) {
-    //         console.log('in for loop');
-    //     }
-    // }
-
 
 
     render() {
+
+        let techRiderCheck = this.props.band_info.tech_rider;
+        let techRiderEndsWith = techRiderCheck.endsWith(".pdf" || ".jpg" || ".png" || ".gif" || ".jpeg");
+
+        let bandRiderCheck = this.props.band_info.band_rider;
+        let bandRiderEndsWith = bandRiderCheck.endsWith(".pdf" || ".jpg" || ".png" || ".gif" || ".jpeg");
+
+        let stagePlotCheck = this.props.band_info.stage_plot;
+        let stagePlotEndsWith = stagePlotCheck.endsWith(".pdf" || ".jpg" || ".png" || ".gif" || ".jpeg");
+
+        let inputListCheck = this.props.band_info.input_list;
+        let inputListEndsWith = inputListCheck.endsWith(".pdf" || ".jpg" || ".png" || ".gif" || ".jpeg");
 
         const { classes } = this.props;
 
@@ -69,24 +64,46 @@ class CurrentBandInfo extends Component {
                             <hr />
                             <br />
                             <h3>Tech Rider</h3>
-                            <object data={this.props.band_info.tech_rider} type="application/pdf application/jpg" width="400">
-                                <p>{this.props.band_info.tech_rider}</p>
-                            </object>
+                            {techRiderEndsWith ?
+                                <object data={this.props.band_info.tech_rider} width="500" height="400">
+                                    <p>{this.props.band_info.tech_rider}</p>
+                                </object>
+                                :
+                                <img src={this.props.band_info.tech_rider} width="500" alt={this.props.band_info.tech_rider} />
+                            }
                             <a href={this.props.band_info.tech_rider} download><GetApp className={classes.icon} /></a>
                             <br />
                             <br />
                             <h3>Hospitality Rider</h3>
-                            <img src={this.props.band_info.band_rider} width="400" alt={this.props.band_info.band_rider} />
+                            {bandRiderEndsWith ?
+                                <object data={this.props.band_info.band_rider} width="500" height="400">
+                                    <p>{this.props.band_info.band_rider}</p>
+                                </object>
+                                :
+                                <img src={this.props.band_info.band_rider} width="500" alt={this.props.band_info.band_rider} />
+                            }
                             <a href={this.props.band_info.band_rider} download><GetApp className={classes.icon} /></a>
                             <br />
                             <br />
                             <h3>Stage Plot</h3>
-                            <img src={this.props.band_info.stage_plot} width="400" alt={this.props.band_info.stage_plot} />
+                            {stagePlotEndsWith ?
+                                <object data={this.props.band_info.stage_plot} width="500" height="400">
+                                    <p>{this.props.band_info.stage_plot}</p>
+                                </object>
+                                :
+                                <img src={this.props.band_info.stage_plot} width="500" alt={this.props.band_info.stage_plot} />
+                            }
                             <a href={this.props.band_info.stage_plot} download><GetApp className={classes.icon} /></a>
                             <br />
                             <br />
                             <h3>Input List</h3>
-                            <img src={this.props.band_info.input_list} width="400" alt={this.props.band_info.input_list} />
+                            {inputListEndsWith ?
+                                <object data={this.props.band_info.input_list} width="500" height="400">
+                                    <p>{this.props.band_info.input_list}</p>
+                                </object>
+                                :
+                                <img src={this.props.band_info.input_list} width="500" alt={this.props.band_info.input_list} />
+                            }
                             <a href={this.props.band_info.input_list} download><GetApp className={classes.icon} /></a>
                         </CardContent>
                     </Card>

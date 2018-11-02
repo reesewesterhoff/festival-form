@@ -129,6 +129,9 @@ class RegisterPage extends Component {
             Login
           </button>
         </center>
+        <br />
+        <br />
+        <br />
       </div>
     );
   }
