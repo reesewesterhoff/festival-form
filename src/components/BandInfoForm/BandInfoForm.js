@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 // connect component to redux
 import { connect } from 'react-redux';
 // material-ui imports
-import UppyModalWithButton from '../UppyModalWithButton/UppyModalWithButton';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+// uppy file uploads
+import UppyModalWithButton from '../UppyModalWithButton/UppyModalWithButton';
+// current band info for users who have already uploaded the first time
 import CurrentBandInfo from '../CurrentBandInfo/CurrentBandInfo';
 
 
