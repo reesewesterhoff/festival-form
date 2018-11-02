@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 // material-ui imports
 import TextField from '@material-ui/core/TextField';
 import AddSnackBar from '../AddSnackBar/AddSnackBar';
+// uppy file upload
+import UppyModalWithButton from '../UppyModalWithButton/UppyModalWithButton';
 
 
 class CreateFestForm extends Component {
@@ -39,6 +41,16 @@ class CreateFestForm extends Component {
             image: '',
         });
     }; // end handleSubmit
+
+    // handle uppy file uploads, curried function
+    handleUploadInputFor = (property) => {
+        return (uploadURL) => {
+            this.setState({
+                ...this.state,
+                [property]: uploadURL,
+            })
+        }
+    }; // end handleUploadInputFor
 
 
     render() {
@@ -81,12 +93,13 @@ class CreateFestForm extends Component {
                     <br />
                     <TextField
                         type="text"
-                        label="Photo Url"
+                        label="Photo Url or Upload"
                         variant="outlined"
                         value={this.state.image}
                         required
                         onChange={this.handleChangeFor('image')}
                     />
+                    <UppyModalWithButton handleUploadInput={this.handleUploadInputFor('image')} />
                     <br />
                     <br />
                     <br />
