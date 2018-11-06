@@ -50,6 +50,3 @@ CREATE TABLE "festival_band_info" (
 INSERT INTO "festival" ("name", "date", "image", "address")
 VALUES ('lollapalooza', '2017/08/02', 'https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2018%2F08%2Flollapalooza-2018-livestream-0.jpg?fit=max&cbr=1&q=90&w=1024&h=683', 'Grant Park, IL'), ('coachella', '2017/04/12', 'https://s3-us-west-1.amazonaws.com/coachella2017-theme/img/coachella-social-share.png', 'Indio, CA');
 
---Dummy band info data
-INSERT INTO "band_info" ("name", "tech_rider", "band_rider", "stage_plot", "input_list", "arrival_time", "requests", "notes", "person_id")
-VALUES ('HobGoblin', 'a bunch of equipment', 'a bunch of stuff', 'http://all4band.com/image/stage_plot2.jpg', 'https://busites_www.s3.amazonaws.com/littlefeatnetcom/content/LF-input-list-2012.jpg', '13:30', 'a request', 'a note', 1);
